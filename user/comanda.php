@@ -7,6 +7,7 @@
  		 type="text/javascript"></script>
         <script type="text/javascript" src="../inc/googlemaps/jquery.min.js"></script>
         <script type="text/javascript" src="../inc/googlemaps/mapa.js"></script>
+        <script type="text/javascript" src="../inc/googlemaps/mapa02.js"></script>
         <script type="text/javascript" src="../inc/googlemaps/jquery-ui.custom.min.js"></script>
    <div class="container">
 
@@ -30,7 +31,7 @@
                     <div class="campos">
                         <label for="txtEndereco">Endereço:</label>
                         <input type="text" id="txtEndereco" name="txtEndereco" />
-                        <input type="submit" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
+                        <!--<input type="submit" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />-->
                     </div>
 
                     <div id="mapa"></div>
@@ -39,6 +40,22 @@
                     
                     <input type="hidden" id="txtLatitude" name="txtLatitude" />
                     <input type="hidden" id="txtLongitude" name="txtLongitude" />
+
+                </fieldset>
+            </form>
+        </div>
+                            <div class="campos">
+                        <label for="txtEndereco02">Endereço:</label>
+                        <input type="text" id="txtEndereco02" name="txtEndereco02" />
+                        <!--<input type="submit" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />-->
+                    </div>
+
+                    <div id="mapa02"></div>
+                    
+                	<input type="submit" value="Enviar" name="btnEnviar" />
+                    
+                    <input type="hidden" id="txtLatitude02" name="txtLatitude02" />
+                    <input type="hidden" id="txtLongitude02" name="txtLongitude02" />
 
                 </fieldset>
             </form>
