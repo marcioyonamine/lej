@@ -17,7 +17,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img src="../assets/img/sass-less.png" width="158" height="56" /></a>
+      <img src="../assets/img/logo_pequeno.png" style="padding-right:20px;" /></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,23 +28,17 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         <li class="dropdown <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=fisica' || basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=fisica') echo 'active' ?>">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clientes <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=fisica') echo 'class="active"' ?>><a href="cadastro.php?p=fisica" title="Pessoa Física">Pessoa Física</a></li>
-            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=juridica') echo 'class="active"' ?>><a href="cadastro.php?p=juridica" title="Pessoa Jurídica">Pessoa Jurídica</a></li>            
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=fisica') echo 'class="active"' ?>><a href="cadastro.php?p=fisica">Cadastrar Pessoa Física</a></li>
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=juridica') echo 'class="active"' ?>><a href="cadastro.php?p=juridica" >Cadastrar Pessoa Jurídica</a></li>          
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=juridica') echo 'class="active"' ?>><a href="cadastro.php?p=juridica" >Buscar</a></li>            
           </ul>
         </li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Condutor <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="https://ialtaperformance.com/courses/alta-performance/lessons/definicao/" title="Módulo online">Módulo online</a></li>
-            <li><a href="https://docs.google.com/spreadsheets/d/15U0bOItK_oltuMT5z_OxOElVOcK2jZ5phFyd0K6wsPA/edit#gid=456464551" title="Sugestão de conteúdo" target="_blank">Sugestão de conteúdo</a></li>
-            
-            <!--
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-            -->
+            <li><a href="cadastro.php?p=condutor" title="Módulo online">Cadastrar</a></li>
+            <li><a href="buscar.php" title="Sugestão de conteúdo" >Buscar</a></li>
           </ul>
         </li>
                 <li class="dropdown">

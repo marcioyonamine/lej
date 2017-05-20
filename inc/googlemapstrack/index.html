@@ -11,7 +11,7 @@
         
         	<h1>Google Maps API v3: Criando rotas</h1>
 
-            <form method="post" action="index.html">
+            <form method="post" class="form_mapas" action="index.html">
                 <fieldset>
                     <legend>Criar rotas</legend>
                     
@@ -35,25 +35,16 @@
             
             <div id="trajeto-texto"></div>
 
-        <form method="post" action="teste.php">
+        <form method="post" class="form_envia" action="teste.php">
             <fieldset>
 
-         <input type="hidden" id="txtEnderecoChegada" name="txtEnderecoChegada" />
-         <input type="hidden" id="txtEnderecoPartida" name="txtEnderecoPartida" />
-		 <input type="submit"  value="Enviar" />      
+         <input type="hidden" id="partida" name="partida" />
+         <input type="hidden" id="chegada" name="chegada" />
+		 <input type="submit" class="form_envia" value="Enviar" />      
             </fieldset>
 
         </form>
 
-        <form method="post" action="teste.php">
-            <fieldset>
-
-         <input type="hidden"  name="chegada" value="1" />
-         <input type="hidden"  name="partida" value="2" />
-		 <input type="submit" class="form_envia" value="Enviar Teste sem ID" />      
-            </fieldset>
-
-        </form>
  		
         
         </div>

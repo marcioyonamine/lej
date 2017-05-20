@@ -24,7 +24,7 @@ switch($p){
 		</div>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Razão Social:</strong><br/>
 							<input type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="RazaoSocial" >
@@ -115,15 +115,10 @@ switch($p){
 		</div>
 	  	<div class="row">
 	  		<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Nome *:</strong><br/>
 							<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome" >
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-8"><strong>Nome Artístico:</strong><br/>
-							<input type="text" class="form-control" id="NomeArtistico" name="NomeArtistico" placeholder="Nome Artístico" >
 						</div>
 					</div>
 					<div class="form-group">
@@ -247,12 +242,12 @@ switch($p){
 	<div class="container">
 		<div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-			<h3>CADASTRO DE PESSOA FÍSICA</h3>
+			<h3>CADASTRO DE CONDUTORES</h3>
             </div>
 		</div>
 	  	<div class="row">
 	  		<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Nome *:</strong><br/>
 							<input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome" >
