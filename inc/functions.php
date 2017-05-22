@@ -19,6 +19,17 @@ function converterObjParaArray($data) { //função que transforma objeto vindo d
     }
 }
 
+function nocache(){
+	echo '
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />';
+
+	
+}
+
 function saudacao(){ 
 	$hora = date('H');
 	if(($hora > 12) AND ($hora <= 18)){
@@ -172,6 +183,28 @@ function geraOpcao($meta,$order = NULL,$select = NULL){ //gera opcoes a partir d
 	}
 }
 
+
+function verificaDoc($doc){
+	$con = bancoMysqli();
+	if(strlen($doc) > 14){ // pj
+		$sql = "SELECT id FROM lej_pj WHERE cnpj LIKE '$doc'";
+		$query = mysqli_query($con,$sql);
+		$n = mysqli_num_rows($query);
+	}else{ //pf
+		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc'";
+		$query = mysqli_query($con,$sql);
+		$n = mysqli_num_rows($query);
+
+	}
+		if($n > 0){
+			$x = mysqli_fetch_array($query);
+			return $x['id'];	
+		}else{
+			return 0;			
+		}
+
+
+}
 
 
 
