@@ -1,13 +1,13 @@
-﻿
-<script type="text/javascript" src="js/autocomplete.js"></script>
-<script src="js/modernizr.custom.js"></script>
-<script src="js/jquery-1.9.1.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
-<script src="js/jquery.maskMoney.js" type="text/javascript"></script>
+﻿<script src="<?php echo $_GLOBALS['url_system'] ?>/assets/js/ie-emulation-modes-warning.js"></script>
+<script type="text/javascript" src="<?php echo $_GLOBALS['url_system'] ?>/js/autocomplete.js"></script>
+<script src="<?php echo $_GLOBALS['url_system'] ?>/js/modernizr.custom.js"></script>
+<script src="<?php echo $_GLOBALS['url_system'] ?>https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<?php echo $_GLOBALS['url_system'] ?>/js/jquery-ui.js"></script>
+<script src="<?php echo $_GLOBALS['url_system'] ?>/js/jquery.maskedinput.js" type="text/javascript"></script>
+<script src="<?php echo $_GLOBALS['url_system'] ?>/js/jquery.maskMoney.js" type="text/javascript"></script>
   <script>
   $(function(){
-	$( "#hora" ).mask("99:99");
+	$( ".hora" ).mask("99:99");
   });
  
     $(function() {
@@ -25,11 +25,8 @@
   $(function() {
     $('#duracao').maskMoney({thousands:'', decimal:'', allowZero:true, suffix: ''});
   })
-  $(function() {
-    $('.soNumero').maskMoney({thousands:'', decimal:'', allowZero:true, suffix: ''});
-  })
   $(function(){
-	$("#CEP").mask("99999-999");
+	$(".CEP").mask("99999-999");
   });
   
   $(function(){
@@ -69,7 +66,7 @@ function mtel(v){
 <script type="text/javascript">
 	$(document).ready(function(){	$("#CNPJ").mask("99.999.999/9999-99");});
 </script>
-<script type="text/javascript">$(document).ready(function(){	$("#cpf").mask("999.999.999-99");});</script>
+<script type="text/javascript">$(document).ready(function(){	$("#CPF").mask("999.999.999-99");});</script>
 
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -145,6 +142,116 @@ function mtel(v){
       changeYear: true
     });
   });
+  $(function() {
+    $( "#datepicker10" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+	  minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker11" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker12" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker13" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker14" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker15" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker16" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker17" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker18" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
+  $(function() {
+    $( "#datepicker19" ).datepicker({ 
+      changeMonth: true,
+      changeYear: true,
+      minDate: 0,
+      addSliderAccess: true,
+      sliderAccessArgs: {
+        touchonly: false
+      }
+    });
+  });
 	//funções para mostrar/esconder
 	$('#toggle1').click(function() {
 		$('.toggle1').slideToggle('slow');
@@ -166,5 +273,5 @@ function mtel(v){
 		$('.toggle5').slideToggle('slow');
 		return false;
 	});	
-  
+
   </script>

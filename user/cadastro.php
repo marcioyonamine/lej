@@ -24,7 +24,7 @@ switch($p){
 		</div>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php?p=juridica" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Razão Social:</strong><br/>
 							<input type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="RazaoSocial" >
@@ -115,39 +115,34 @@ switch($p){
 		</div>
 	  	<div class="row">
 	  		<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php?p=fisica" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Nome *:</strong><br/>
 							<input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome" >
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-8"><strong>Nome Artístico:</strong><br/>
-							<input type="text" class="form-control" id="NomeArtistico" name="NomeArtistico" placeholder="Nome Artístico" >
-						</div>
-					</div>
-					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Tipo de documento *:</strong><br/>
 							<select class="form-control" id="tipoDocumento" name="tipoDocumento" >
-								
+								<?php geraOpcao("tipo_doc");?>
 							</select>
 						</div>				  
 						<div class=" col-md-4"><strong>Documento *:</strong><br/>
-							<input type="text" class="form-control" id="RG" name="RG" placeholder="Documento" >
+							<input type="text" class="form-control rg" id="RG" name="RG" placeholder="Documento" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CPF *:</strong><br/>
-							<input type="text" class="form-control" id="cpf" name="CPF" placeholder="CPF" value="<?php echo $busca; ?> ">
+							<input type="text" class="form-control cpf" id="CPF" name="CPF" placeholder="CPF" value="">
 						</div>				  
-						<div class=" col-md-4"><strong>CCM *:</strong><br/>
+						<div class=" col-md-4"><strong>CNH *:</strong><br/>
 							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CCM" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Estado civil:</strong><br/>
 							<select class="form-control" id="IdEstadoCivil" name="IdEstadoCivil" >
-								
+								<?php geraOpcao("estado_civil");?>
 							</select>
 						</div>				  
 						<div class=" col-md-4"><strong>Data de nascimento:</strong><br/>
@@ -205,22 +200,6 @@ switch($p){
 						</div>
 					</div>	  
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>DRT:</strong><br/>
-							<input type="text" class="form-control" id="DRT" name="DRT" placeholder="DRT" >
-						</div>				  
-						<div class=" col-md-4"><strong>Função:</strong><br/>
-							<input type="text" class="form-control" id="Funcao" name="Funcao" placeholder="Função">
-						</div>
-					</div>  
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Inscrição do INSS ou PIS/PASEP:</strong><br/>
-							<input type="text" class="form-control" id="InscricaoINSS" name="InscricaoINSS" placeholder="Inscrição no INSS ou PIS/PASEP" >
-						</div>				  
-						<div class=" col-md-4"><strong>OMB:</strong><br/>
-							<input type="text" class="form-control" id="OMB" name="OMB" placeholder="OMB" >
-						</div>
-					</div>
-					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Observação:</strong><br/>
 							<textarea name="Observacao" class="form-control" rows="10" placeholder=""></textarea>
 						</div>
@@ -252,7 +231,7 @@ switch($p){
 		</div>
 	  	<div class="row">
 	  		<div class="col-md-offset-1 col-md-10">
-				<form class="form-horizontal" role="form" action="?perfil=contratados&p=lista" method="post">
+				<form class="form-horizontal" role="form" action="editar.php?p=condutor" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Nome *:</strong><br/>
 							<input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome" >

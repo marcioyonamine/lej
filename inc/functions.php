@@ -1,6 +1,6 @@
 ﻿<?php
 
-
+// funcoes sistema lej
 
 include "db.php";
 include "globals.php";
@@ -42,45 +42,13 @@ function somarDatas($data,$dias){
 	return $data_final;
 }
 
-function nextMonday($data, $usuario = null){
-	if($usuario == null){
-		$user = wp_get_current_user();
-		$usuario = $user->ID;
-	}
-	
-	$diasemana_numero = date('w', strtotime($data)); //data em sql Y-m-d
-	switch($diasemana_numero){
-		case 0:
-			return somarDatas($data,"+ 1");
-		break;		
-		case 1:
-			if($usuario > 60){
-				return $data;
-			}else{
-				return somarDatas($data,"+ 7");
-			}			
-		break;		
-		case 2:
-			if($usuario > 60){
-				return somarDatas($data,"- 1");
-			}else{
-				return somarDatas($data,"+ 6");
-			}			
-		break;
-		case 3:
-			return somarDatas($data,"+ 5");
-		break;		
-		case 4:
-			return somarDatas($data,"+ 4");
-		break;		
-		case 5:
-			return somarDatas($data,"+ 3");
-		break;		
-		case 6:
-			return somarDatas($data,"+ 2");
-		break;		
-
-	}
+function recuperaDados($tabela,$idEvento,$campo){ //retorna uma array com os dados de qualquer tabela. serve apenas para 1 registro.
+	$con = bancoMysqli();
+	$sql = "SELECT * FROM $tabela WHERE ".$campo." = '$idEvento' LIMIT 0,1";
+	//echo "SQL 117: " . $sql;
+	$query = mysqli_query($con,$sql);
+	$campo = mysqli_fetch_array($query);
+	return $campo;		
 }
 
 // Retira acentos das strings
@@ -102,14 +70,6 @@ function exibirDataBrOrdem($data){
 }
 
 
-function recuperaDados($tabela,$idEvento,$campo){ //retorna uma array com os dados de qualquer tabela. serve apenas para 1 registro.
-	$con = bancoMysqli();
-	$sql = "SELECT * FROM $tabela WHERE ".$campo." = '$idEvento' LIMIT 0,1";
-	//echo "SQL 117: " . $sql;
-	$query = mysqli_query($con,$sql);
-	$campo = mysqli_fetch_array($query);
-	return $campo;		
-}
 
 function checado($x,$array){
 	if (in_array($x,$array)){
@@ -183,15 +143,36 @@ function vGlobais(){
 
 function distancia($lat1, $lon1, $lat2, $lon2) { //Em km
 
-$lat1 = deg2rad($lat1);
-$lat2 = deg2rad($lat2);
-$lon1 = deg2rad($lon1);
-$lon2 = deg2rad($lon2);
-
-$dist = (6371 * acos( cos( $lat1 ) * cos( $lat2 ) * cos( $lon2 - $lon1 ) + sin( $lat1 ) * sin($lat2) ) );
-$dist = number_format($dist, 2, '.', '');
-return $dist;
+	$lat1 = deg2rad($lat1);
+	$lat2 = deg2rad($lat2);
+	$lon1 = deg2rad($lon1);
+	$lon2 = deg2rad($lon2);
+	
+	$dist = (6371 * acos( cos( $lat1 ) * cos( $lat2 ) * cos( $lon2 - $lon1 ) + sin( $lat1 ) * sin($lat2) ) );
+	$dist = number_format($dist, 2, '.', '');
+	return $dist;
 }
+
+function geraOpcao($meta,$order = NULL,$select = NULL){ //gera opcoes a partir da tabela _opcoes
+	$con = bancoMysqli();
+	if($order != NULL){
+		$sqlorder = " ORDER BY $order";
+	}else{
+		$sqlorder = "";	
+	}
+	
+	$sql = "SELECT * FROM lej_opcoes WHERE meta = '$meta' AND publish = '1' $sqlorder";
+	$query = mysqli_query($con,$sql);
+	while($ar = mysqli_fetch_array($query)){
+		echo "<option value='".$ar['id']."'";
+		if($select != NULL && $ar['id'] == $select){
+			echo " selected='selected' ";	
+		}	
+		echo " >".$ar['value']."</option>";
+	}
+}
+
+
 
 
 /* ------------- classes --------------- */

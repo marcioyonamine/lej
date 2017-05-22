@@ -11,4 +11,5 @@ $hoje = date('Y-m-d'); //global data
 $titulo = "L&J Transportes";
 $rodape = "L&J Transportes 2017";
 $google_maps_key = "AIzaSyBG7ihPBJpG9lj1rhOZelf-ne0_eL9qjXg";
+$url_system = "http://localhost/lejtransportes/lej/";
 
