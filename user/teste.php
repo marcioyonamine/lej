@@ -3,6 +3,21 @@ include "../inc/functions.php";
 
 
 
+
+
+
+
+
+
+
+?>
+<?php
+
+
+
+
+
+echo "<h1> Maps </h1>";
 $gmaps = new gMaps($GLOBALS['google_maps_key']);
 // Pega os dados (latitude, longitude e zoom) do endereço:
 $endereco = $_POST['partida'];

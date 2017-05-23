@@ -55,19 +55,27 @@
 
        <div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Cliente:</strong><br/>
-					<input type="text" class="form-control" id="RazaoSocial" name="cliente" placeholder="RazaoSocial" >
+					<select name="pessoa" id="pessoa" class="form-control">
+                    <option value=0>Escolha um tipo de cliente</option>
+                    <option value="1">Pessoa Física</option>
+                    <option value="2">Pessoa Jurídica</option>
+
+                    </select>
+			</div>
+		</div>
+       <div class="form-group">
+			<div class="col-md-offset-2 col-md-8"><strong>Cliente:</strong><br/>
+				<select name="cliente" id="cliente" class="form-control"></select>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Condutor:</strong><br/>
-	 			<input type="text" class="form-control" id="RazaoSocial" name="condutor" placeholder="RazaoSocial" >
+				<select name="condutor" id="condutor" class="form-control">
+                
+                </select>
 			</div>
 		</div>
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-8"><strong>Solicitante ou contato</strong><br/>
-	 			<input type="text" class="form-control" id="RazaoSocial" name="solicitante" placeholder="RazaoSocial" >
-			</div>
-		</div>        
+    
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-4"><strong>Data:</strong><br/>
 				<input type="text" class="form-control" id="Numero" name="data" placeholder="Numero">

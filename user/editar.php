@@ -1,3 +1,4 @@
+
 <?php include '../inc/header.php'; ?>
 <?php include '../inc/menu-admin.php'; ?>
 <?php 
@@ -13,6 +14,78 @@ if(isset($_GET['p'])){
 switch($p){
 
 	case "juridica":
+		$con = bancoMysqli();
+	//carrega as variáveis		
+	  $razao = $_POST["RazaoSocial"];
+	  $cnpj = $_POST["CNPJ"];
+	  $inscricao = $_POST["inscricao"];
+	  $cep = $_POST["CEP"];
+	  $numero = $_POST["Numero"];
+	  $complemento = $_POST["Complemento"];
+	  $contato = $_POST["Contato"];
+	  $tel01 = $_POST["Telefone1"];
+	  $tel02 = $_POST["Telefone2"];
+	  $tel03 = $_POST["Telefone3"];
+	  $email = $_POST["Email"];
+	  $obs = $_POST["Observacao"];
+
+	// cadastra um novo cliente
+	if(isset($_POST['cadastrarJuridica'])){
+	$ver_doc = verificaDoc($cnpj);
+		if($ver_doc == 0){		
+			$sql_insert = "INSERT INTO `lej_pj` (`id`, `id_wp`, `funcao`, `nome`, `cnpj`, `cep`, `numero`, `complemento`, `email`, `contato`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `cod_banco`, `agencia`, `conta`, `inscricao`, `data_atualizacao`) 
+			VALUES (NULL, '', '', '$razao', '$cnpj', '$cep', '$numero', '$complemento', '$email', '$contato', '$tel01', '$tel02', '$tel03', '', '', '', '', '$inscricao', '')";
+			$query_insert = mysqli_query($con,$sql_insert);
+			if($query_insert){
+				$men = "Inserido com sucesso!";
+				$id = mysqli_insert_id($con);
+				$pessoa = recuperaDados("lej_pj",$id,"id");
+			}else{
+				$men = "Erro ao inserir";			
+			}
+		}
+		
+	}else{
+		
+	
+	}
+
+
+	// edita um novo cliente
+	if(isset($_POST['editarJuridica'])){
+		$id = $_POST['editarJuridica'];
+		$sql_update = "UPDATE lej_pj SET
+		nome = '$razao', 
+		cnpj = '$cnpj', 
+		cep = '$cep', 
+		numero = '$numero', 
+		complemento = '$complemento', 
+		email = '$email', 
+		contato = '$contato', 
+		telefone01 = '$tel01', 
+		telefone02 = '$tel02', 
+		telefone03 = '$tel03', 
+		inscricao = '$inscricao'
+		WHERE id = '$id';
+					
+		";
+		$query_update = mysqli_query($con,$sql_update);
+		if($query_update){
+			$men = "Atualizado com sucesso!";
+			$pessoa = recuperaDados("lej_pj",$id,"id");
+		}else{
+			$men = "Erro ao atualizar<br />".$sql_update;			
+		}	
+		
+	}
+
+
+if(isset($_POST['carregarJuridica'])){
+	$pessoa = recuperaDados("lej_pj",$_POST['carregarJuridica'],"id");
+}
+
+if($ver_doc == 0){
+
 ?>
 
 <section id="contact" class="home-section bg-white">
@@ -20,6 +93,7 @@ switch($p){
 		<div class="form-group">
         <div class="col-md-offset-2 col-md-8">
 			<h3>CADASTRO DE PESSOA JURÍDICA</h3>
+            <p><?php if(isset($men)){echo $men;	}?></p>
             </div>
 		</div>
 		<div class="row">
@@ -27,72 +101,76 @@ switch($p){
 				<form class="form-horizontal" role="form" action="editar.php?p=juridica" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Razão Social:</strong><br/>
-							<input type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="RazaoSocial" >
+							<input type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="RazaoSocial" value="<?php echo $pessoa['nome']?>" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CNPJ:</strong><br/>
-							<input type="text" readonly class="form-control" id="CNPJ" name="CNPJ" placeholder="CNPJ" value=<?php echo $_POST['busca'] ?> >
+							<input type="text" class="form-control cnpj" id="CNPJ" name="CNPJ" placeholder="CNPJ" value="<?php echo $pessoa['cnpj']?>">
 						</div>
-						<div class="col-md-4"><strong>CNH:</strong><br/>
-							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CCM" >
+						<div class="col-md-4"><strong>Inscrição:</strong><br/>
+							<input type="text" class="form-control" id="CCM" name="inscricao" placeholder="Inscrição" value="<?php echo $pessoa['inscricao']?>">
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CEP *:</strong><br/>
-							<input type="text" class="form-control" id="CEP" name="CEP" placeholder="XXXXX-XXX">
+							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="" value="<?php echo $pessoa['cep']?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Estado *:</strong><br/>
-							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado">
+							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado" readonly >
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Endereço *:</strong><br/>
-							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço">
+							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço" readonly>
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Número *:</strong><br/>
-							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero">
+							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero" value="<?php echo $pessoa['numero']?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Complemento:</strong><br/>
-							<input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento">
+							<input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento" value="<?php echo $pessoa['complemento']?>">
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Bairro *:</strong><br/>
-							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro">
+							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro" readonly>
 						</div>				  
 						<div class=" col-md-4"><strong>Cidade *:</strong><br/>
-							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade">
+							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade" readonly>
 						</div>
 					</div>  
-					<div class="form-group">
-						<div class=" col-md-4"><strong>E-mail:</strong><br/>
-							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail">
-						</div>
-						<div class=" col-md-4"><strong>Telefone #1</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
+                    					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8"><strong>Contato:</strong><br/>
+							<input type="text" class="form-control" id="RazaoSocial" name="Contato" placeholder="Contato" value="<?php echo $pessoa['contato']?>">
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Telefone #2</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321">
+						<div class="col-md-offset-2 col-md-4"><strong>Telefone:</strong><br/>
+							<input type="text" class="form-control tel_dd" id="telefone"   name="Telefone1"  value="<?php echo $pessoa['telefone01']?>">
 						</div>				  
-						<div class="col-md-offset-2 col-md-4"><strong>Telefone #3</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321">
+						<div class=" col-md-4"><strong>Telefone:</strong><br/>
+							<input type="text" class="form-control tel_dd" id="telefone"  name="Telefone2"  value="<?php echo $pessoa['telefone02']?>" >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-4"><strong>Telefone:</strong><br/>
+							<input type="text" class="form-control tel_dd" id="telefone"   name="Telefone3"  value="<?php echo $pessoa['telefone03']?>">
 						</div>				  
-
+						<div class=" col-md-4"><strong>E-mail:</strong><br/>
+							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" value="<?php echo $pessoa['email']?>">
+						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Observações:</strong><br/>
-							<textarea name="Observacao" class="form-control" rows="10" placeholder=""></textarea>
+							<textarea name="Observacao" class="form-control" rows="10" placeholder=""><?php echo $pessoa['obs']?></textarea>
 						</div>
 					</div>
 					<!-- Botão Gravar -->	
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8">
-							<input type="hidden" name="cadastrarJuridica" value="1" />
+							<input type="hidden" name="editarJuridica" value="<?php echo $pessoa['id'] ?>" />
 							<input type="submit" value="GRAVAR" class="btn btn-theme btn-lg btn-block">
 						</div>
 					</div>
@@ -101,6 +179,38 @@ switch($p){
 		</div>		
 	</div>
 </section>
+<?php }else{ ?>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+			<h3>CADASTRO DE PESSOA JURÌDICA</h3>
+            <p><?php if(isset($men)){echo $men;} ?></p>
+            </div>
+		</div>
+	  	<div class="row">
+	  		<div class="col-md-offset-1 col-md-10">
+				<form class="form-horizontal" role="form" action="editar.php?p=juridica" method="post">
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+						<p>O CPF <?php echo $cnpj ?> já existe no sistema. Gostaria de editá-lo?</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+                        	
+							<input type="hidden" name="carregarJuridica" value="<?php echo $ver_doc; ?>" />
+							<input type="hidden" name="Sucesso" id="Sucesso" />
+							<input type="submit" value="Carregar" class="btn btn-theme btn-lg btn-block">
+						</div>
+					</div>
+				</form>
+	  		</div>	
+	  	</div>
+	</div>
+</section>
+<?php } ?>
+
 <?php 
 
 	break;
@@ -130,16 +240,21 @@ switch($p){
 
 //Cadastrar Nova
 if(isset($_POST ['cadastrarFisica'])){
-	$sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`,`tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `obs`) VALUES (NULL, '', '', '$nome', '$cpf', '$tipo_doc', '$rg', '$cnh', '$data_nasc', '$nacionalidade', '$estado_civil', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '', '', '', '$obs');";
-	
-	$query_insert = mysqli_query($con, $sql_insert);
-	if($query_insert){
-		$idPessoa = mysqli_insert_id($con);
-		$pessoa = recuperaDados("lej_pf",$idPessoa,"id");
-		$men = "Inserido";	
+	$ver_doc = verificaDoc($cpf);
+	if($ver_doc == 0){
+		$sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`,`tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `obs`) VALUES (NULL, '', '6', '$nome', '$cpf', '$tipo_doc', '$rg', '$cnh', '$data_nasc', '$nacionalidade', '$estado_civil', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '', '', '', '$obs');";
 		
+		$query_insert = mysqli_query($con, $sql_insert);
+		if($query_insert){
+			$idPessoa = mysqli_insert_id($con);
+			$pessoa = recuperaDados("lej_pf",$idPessoa,"id");
+			$men = "Inserido";	
+			
+		}else{
+			$men = "Erro.<br />$sql_insert";
+		}
 	}else{
-		$men = "Erro.<br />$sql_insert";
+		echo '<meta http-equiv="Location" content="cadastro.php?p=fisica&m=1">';
 	}
 }
 //Editar cadastro
@@ -174,6 +289,12 @@ if(isset($_POST['editarFisica'])){
 
 }
 
+if(isset($_POST['carregarFisica'])){
+	$pessoa = recuperaDados("lej_pf",$_POST['carregarFisica'],"id");
+}
+
+if($ver_doc == 0){
+
 ?>
 
 <section id="contact" class="home-section bg-white">
@@ -195,7 +316,7 @@ if(isset($_POST['editarFisica'])){
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Tipo de documento *:</strong><br/>
 							<select class="form-control" id="tipoDocumento" name="tipoDocumento" >
-								<?php geraOpcao("tipo_doc",$pessoa['tipo_doc'])?>
+								<?php geraOpcao("tipo_doc",NULL,$pessoa['tipo_doc'])?>
 							</select>
 						</div>				  
 						<div class=" col-md-4"><strong>Documento *:</strong><br/>
@@ -213,7 +334,7 @@ if(isset($_POST['editarFisica'])){
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Estado civil:</strong><br/>
 							<select class="form-control" id="IdEstadoCivil" name="IdEstadoCivil" >
-								<?php geraOpcao("estado_civil",$pessoa['estado_civil']) ?>
+								<?php geraOpcao("estado_civil",NULL,$pessoa['estado_civil']) ?>
 							</select>
 						</div>				  
 						<div class=" col-md-4"><strong>Data de nascimento:</strong><br/>
@@ -287,6 +408,43 @@ if(isset($_POST['editarFisica'])){
 	  	</div>
 	</div>
 </section>
+<?php 
+}else{
+?>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+			<h3>CADASTRO DE PESSOA FÍSICA</h3>
+            <p><?php if(isset($men)){echo $men;} ?></p>
+            </div>
+		</div>
+	  	<div class="row">
+	  		<div class="col-md-offset-1 col-md-10">
+				<form class="form-horizontal" role="form" action="editar.php?p=fisica" method="post">
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+						<p>O CPF <?php echo $cpf ?> já existe no sistema. Gostaria de editá-lo?</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+                        	
+							<input type="hidden" name="carregarFisica" value="<?php echo $ver_doc; ?>" />
+							<input type="hidden" name="Sucesso" id="Sucesso" />
+							<input type="submit" value="Carregar" class="btn btn-theme btn-lg btn-block">
+						</div>
+					</div>
+				</form>
+	  		</div>	
+	  	</div>
+	</div>
+</section>
+<?php		
+}
+?>
+
+
 <?php 
 	break;
 	case "condutor":

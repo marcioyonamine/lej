@@ -32,23 +32,23 @@ switch($p){
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CNPJ:</strong><br/>
-							<input type="text" readonly class="form-control" id="CNPJ" name="CNPJ" placeholder="CNPJ" value=<?php echo $_POST['busca'] ?> >
+							<input type="text" class="form-control cnpj" id="CNPJ" name="CNPJ" placeholder="CNPJ" >
 						</div>
-						<div class="col-md-4"><strong>CCM:</strong><br/>
-							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CCM" >
+						<div class="col-md-4"><strong>Inscrição:</strong><br/>
+							<input type="text" class="form-control" id="CCM" name="inscricao" placeholder="Inscrição" >
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CEP *:</strong><br/>
-							<input type="text" class="form-control" id="CEP" name="CEP" placeholder="XXXXX-XXX">
+							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="XXXXX-XXX">
 						</div>				  
 						<div class=" col-md-4"><strong>Estado *:</strong><br/>
-							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado">
+							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado" readonly>
 						</div>
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Endereço *:</strong><br/>
-							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço">
+							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço" readonly>
 						</div>
 					</div>  
 					<div class="form-group">
@@ -61,23 +61,28 @@ switch($p){
 					</div>  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Bairro *:</strong><br/>
-							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro">
+							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro" readonly>
 						</div>				  
 						<div class=" col-md-4"><strong>Cidade *:</strong><br/>
-							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade">
+							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade" readonly>
 						</div>
 					</div>  
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Telefone:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321">
-						</div>				  
-						<div class=" col-md-4"><strong>Telefone:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+                    					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8"><strong>Contato:</strong><br/>
+							<input type="text" class="form-control" id="RazaoSocial" name="Contato" placeholder="Contato" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Telefone:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321">
+							<input type="text" class="form-control tel_dd" name="Telefone1" placeholder="Exemplo: (11) 98765-4321">
+						</div>				  
+						<div class=" col-md-4"><strong>Telefone:</strong><br/>
+							<input type="text" class="form-control tel_dd" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-4"><strong>Telefone:</strong><br/>
+							<input type="text" class="form-control tel_dd"  name="Telefone3" placeholder="Exemplo: (11) 98765-4321">
 						</div>				  
 						<div class=" col-md-4"><strong>E-mail:</strong><br/>
 							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail">
@@ -136,7 +141,7 @@ switch($p){
 							<input type="text" class="form-control cpf" id="CPF" name="CPF" placeholder="CPF" value="">
 						</div>				  
 						<div class=" col-md-4"><strong>CNH *:</strong><br/>
-							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CCM" >
+							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CNH" >
 						</div>
 					</div>
 					<div class="form-group">
@@ -146,7 +151,7 @@ switch($p){
 							</select>
 						</div>				  
 						<div class=" col-md-4"><strong>Data de nascimento:</strong><br/>
-							<input type="text" class="form-control" id="datepicker01" name="DataNascimento" placeholder="Data de Nascimento" >
+							<input type="text" class="form-control date" id="datepicker01" name="DataNascimento" placeholder="Data de Nascimento" >
 						</div>
 					</div>
 					<div class="form-group">
@@ -154,12 +159,12 @@ switch($p){
 							<input type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Nacionalidade">
 						</div>				  
 						<div class=" col-md-4"><strong>CEP:</strong><br/>
-							<input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP">
+							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="CEP">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Endereço *:</strong><br/>
-							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço">
+							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço" readonly >
 						</div>
 					</div>
 					<div class="form-group">
@@ -167,7 +172,7 @@ switch($p){
 							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero">
 						</div>				  
 						<div class=" col-md-4"><strong>Bairro:</strong><br/>
-							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro">
+							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro" readonly >
 						</div>
 					</div>
 					<div class="form-group">     
@@ -177,10 +182,10 @@ switch($p){
 					</div>		
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Cidade *:</strong><br/>
-							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade">
+							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade" readonly>
 						</div>
 						<div class=" col-md-4"><strong>Estado *:</strong><br/>
-							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado">
+							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado" readonly>
 						</div>
 					</div>		  
 					<div class="form-group">
@@ -188,15 +193,15 @@ switch($p){
 							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" >
 						</div>				  
 						<div class=" col-md-4"><strong>Telefone #1 *:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Telefone #2:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
 						</div>				  
 						<div class="col-md-4"><strong>Telefone #3:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
 						</div>
 					</div>	  
 					<div class="form-group">

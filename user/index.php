@@ -6,6 +6,7 @@
 
       <div class="jumbotron">
         <h1><?php echo saudacao();?>, <?php echo $user->user_firstname ?>!</h1>
+
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
       </div>
@@ -33,6 +34,7 @@
           <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
       </div>
+
 
 
     </div> <!-- /container -->
