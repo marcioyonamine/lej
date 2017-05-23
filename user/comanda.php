@@ -71,17 +71,18 @@
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Condutor:</strong><br/>
 				<select name="condutor" id="condutor" class="form-control">
-                
+                <option>Escolha o Condutor</option>
+                <?php geraCondutor(); ?>
                 </select>
 			</div>
 		</div>
     
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-4"><strong>Data:</strong><br/>
-				<input type="text" class="form-control" id="Numero" name="data" placeholder="Numero">
+				<input type="text" class="form-control datepicker" id="Numero" name="data" placeholder="Numero">
 			</div>				  
 			<div class=" col-md-4"><strong>Saída:</strong><br/>
-					<input type="text" class="form-control" id="Complemento" name="saida" placeholder="Complemento">
+					<input type="text" class="form-control hora" id="Complemento" name="saida" placeholder="Complemento">
 			</div>
 		</div> 
 

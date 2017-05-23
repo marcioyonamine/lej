@@ -225,13 +225,16 @@ switch($p){
 	break;
 	case "condutor":
 	default:
+	
+	
+	
 ?>
 
 <section id="contact" class="home-section bg-white">
 	<div class="container">
 		<div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-			<h3>CADASTRO DE PESSOA FÍSICA</h3>
+			<h3>CADASTRO DE CONDUTOR</h3>
             </div>
 		</div>
 	  	<div class="row">
@@ -244,10 +247,10 @@ switch($p){
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CPF:</strong><br/>
-							<input type="text" class="form-control" id="RG" name="cpf" placeholder="Documento" >
+							<input type="text" class="form-control cpf" id="RG" name="cpf" placeholder="Documento" >
 						</div>				  
 						<div class=" col-md-4"><strong>Documento *:</strong><br/>
-							<input type="text" class="form-control" id="RG" name="rg" placeholder="Documento" >
+							<input type="text" class="form-control rg" id="RG" name="rg" placeholder="Documento" >
 						</div>
 					</div>
 					<!--
@@ -266,7 +269,7 @@ switch($p){
 							<input type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Nacionalidade">
 						</div>				  
 						<div class=" col-md-4"><strong>CEP:</strong><br/>
-							<input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP">
+							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="CEP">
 						</div>
 					</div>
 					<div class="form-group">
@@ -300,23 +303,23 @@ switch($p){
 							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" >
 						</div>				  
 						<div class=" col-md-4"><strong>Telefone #1 *:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control" id="telefone"  maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Telefone #2:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control" id="telefone" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
 						</div>				  
-						<div class="col-md-4"><strong>Whatsapp:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
+						<div class="col-md-4"><strong>Telefone #3:</strong><br/>
+							<input type="text" class="form-control" id="telefone"  maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
 						</div>
 					</div>	  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Placa:</strong><br/>
-							<input type="text" class="form-control" id="DRT" name="DRT" placeholder="DRT" >
+							<input type="text" class="form-control" id="DRT" name="Placa"  >
 						</div>				  
 						<div class=" col-md-4"><strong>Fixo:</strong><br/>
-							<input type="text" class="form-control" id="Funcao" name="Funcao" placeholder="Função">
+							<input type="text" class="form-control valor_real" id="Funcao" name="Fixo" >
 						</div>
 					</div>  
 

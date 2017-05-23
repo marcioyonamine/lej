@@ -96,6 +96,19 @@ function select($id,$sel){
 	}	
 }
 
+	//retorna valor xxx,xx para xxx.xx
+	function dinheiroDeBr($valor)
+	{
+		$valor = str_ireplace(".","",$valor);
+		$valor = str_ireplace(",",".",$valor);
+		return $valor;
+	}
+	//retorna valor xxx.xx para xxx,xx
+	function dinheiroParaBr($valor)
+	{ 
+		$valor = number_format($valor, 2, ',', '.');
+		return $valor;
+	}
 
 
 function gravarLog($log, $idUsuario){ //grava na tabela ig_log os inserts e updates
@@ -205,7 +218,11 @@ function verificaDoc($doc){
 
 function geraCondutor(){
 	$con = bancoMysqli();
-	$sql = "SELECT id,";
+	$sql = "SELECT id,nome FROM lej_pf WHERE funcao = '7' ORDER BY nome";
+	$query = mysqli_query($con,$sql);
+	while($ar = mysqli_fetch_array($query)){
+		echo "<option value='".$ar['id']."'>".$ar['nome']."</option>";	
+	}
 }
 
 

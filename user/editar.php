@@ -449,6 +449,83 @@ if($ver_doc == 0){
 	break;
 	case "condutor":
 	default:
+	
+$con = bancoMysqli();	
+  $nome = $_POST["nome"];
+  $cpf = $_POST["cpf"];
+  $rg = $_POST["rg"];
+  $nacionalidade = $_POST["Nacionalidade"];
+  $cep = $_POST["CEP"];
+  $numero = $_POST["Numero"];
+  $complemento = $_POST["Complemento"];
+  $email = $_POST["Email"];
+  $tel01 = $_POST["Telefone1"];
+  $tel02 = $_POST["Telefone2"];
+  $tel03 = $_POST["Telefone3"];
+  $placa = $_POST["Placa"];
+  $fixo = dinheiroDeBr($_POST["Fixo"]);
+  $obs = $_POST["Observacao"];
+  
+  if(isset($_POST['cadastrarCondutor'])){
+	$ver_doc = verificaDoc($cpf);
+	if($ver_doc == 0){
+	  
+	  $sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`, `tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `fixo`, `obs`) 
+	  VALUES (NULL, '', '7', '$nome', '$cpf', '1', '$rg', '', '', '$nacionalidade', '', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '','', '$placa', '$fixo', '$obs')";
+  
+  		$query_insert = mysqli_query($con,$sql_insert);
+		if($query_insert){
+			$id = mysqli_insert_id($con);
+			$pessoa = recuperaDados("lej_pf",$id,"id");
+			$men = "Inserito com sucesso!";
+		}else{
+			$men = "erro ao inserir.<br />$sql_insert";	
+		}
+  
+	}
+  }
+  
+  
+  if(isset($_POST['editarCondutor'])){
+	  $id = $_POST['editarCondutor'];
+	  $sql_update = "UPDATE lej_pf SET
+  nome = '$nome',
+  cpf = '$cpf', 
+  rg = '$rg', 
+  nacionalidade = '$nacionalidade', 
+  cep = '$cep', 
+  numero = '$numero',
+  complemento = '$complemento',
+  email = '$email',
+  telefone01 = '$tel01', 
+  telefone02 = '$tel02', 
+  telefone03 = '$tel03', 
+  placa = '$placa', 
+  fixo = '$fixo', 
+  obs = '$obs'
+  WHERE id = '$id'";
+  $query_update = mysqli_query($con,$sql_update);
+  if($query_update){
+	  $men = "Atualizado com sucesso!";
+   }else{
+	   $men = "erro ao atualizar.<br />$sql_update";	
+  } 
+			$pessoa = recuperaDados("lej_pf",$id,"id");
+	  
+  }
+
+if(isset($_POST['carregarCondutor'])){
+	$pessoa = recuperaDados("lej_pf",$_POST['carregarCondutor'],"id");	
+
+}
+  
+?>
+
+
+
+<?php 
+if($ver_doc == 0){
+
 ?>
 
 <section id="contact" class="home-section bg-white">
@@ -456,6 +533,9 @@ if($ver_doc == 0){
 		<div class="form-group">
         <div class="col-md-offset-2 col-md-8">
 			<h3>CADASTRO DE CONDUTORES</h3>
+            <p><?php if(isset($men)){echo $men;}?></p>
+<p><?php //var_dump($pessoa); ?></p>
+<p><?php //echo $sql_update; ?></p>
             </div>
 		</div>
 	  	<div class="row">
@@ -463,15 +543,15 @@ if($ver_doc == 0){
 				<form class="form-horizontal" role="form" action="editar.php?p=condutor" method="post">
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Nome *:</strong><br/>
-							<input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome" >
+							<input type="text" class="form-control" id="Nome" name="nome" placeholder="Nome" value="<?php echo $pessoa['nome'] ?>" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>CPF:</strong><br/>
-							<input type="text" class="form-control" id="RG" name="cpf" placeholder="Documento" >
+							<input type="text" class="form-control cpf" id="RG" name="cpf" placeholder="Documento" value="<?php echo $pessoa['cpf'] ?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Documento *:</strong><br/>
-							<input type="text" class="form-control" id="RG" name="rg" placeholder="Documento" >
+							<input type="text" class="form-control rg" id="RG" name="rg" placeholder="Documento" value="<?php echo $pessoa['rg'] ?>">
 						</div>
 					</div>
 					<!--
@@ -487,20 +567,20 @@ if($ver_doc == 0){
 					</div> -->
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Data de nascimento:</strong><br/>
-							<input type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Nacionalidade">
+							<input type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Nacionalidade" value="<?php echo $pessoa['nacionalidade'] ?>">
 						</div>				  
 						<div class=" col-md-4"><strong>CEP:</strong><br/>
-							<input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP">
+							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="CEP" value="<?php echo $pessoa['cep'] ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Endereço *:</strong><br/>
-							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço">
+							<input type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Endereço" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Número *:</strong><br/>
-							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero">
+							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero" value="<?php echo $pessoa['numero'] ?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Bairro:</strong><br/>
 							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro">
@@ -508,7 +588,7 @@ if($ver_doc == 0){
 					</div>
 					<div class="form-group">     
 						<div class="col-md-offset-2 col-md-8"><strong>Complemento *:</strong><br/>
-							<input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento">
+							<input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento" value="<?php echo $pessoa['complemento'] ?>">
 						</div>
 					</div>		
 					<div class="form-group">
@@ -521,37 +601,37 @@ if($ver_doc == 0){
 					</div>		  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>E-mail *:</strong><br/>
-							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" >
+							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" value="<?php echo $pessoa['email'] ?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Telefone #1 *:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" value="<?php echo $pessoa['telefone01'] ?>" >
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Telefone #2:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" value="<?php echo $pessoa['telefone02'] ?>" >
 						</div>				  
 						<div class="col-md-4"><strong>Whatsapp:</strong><br/>
-							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
+							<input type="text" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" value="<?php echo $pessoa['telefone03'] ?>" >
 						</div>
 					</div>	  
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Placa:</strong><br/>
-							<input type="text" class="form-control" id="DRT" name="DRT" placeholder="DRT" >
+							<input type="text" class="form-control" id="DRT" name="Placa"  value="<?php echo $pessoa['placa'] ?>">
 						</div>				  
 						<div class=" col-md-4"><strong>Fixo:</strong><br/>
-							<input type="text" class="form-control" id="Funcao" name="Funcao" placeholder="Função">
+							<input type="text" class="form-control valor_real" id="Funcao" name="Fixo" value="<?php echo dinheiroParaBr($pessoa['fixo']) ?>">
 						</div>
 					</div>  
 
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Observação:</strong><br/>
-							<textarea name="Observacao" class="form-control" rows="10" placeholder=""></textarea>
+							<textarea name="Observacao" class="form-control" rows="10" placeholder=""><?php echo $pessoa['obs'] ?></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8">
-							<input type="hidden" name="cadastrarCondutor" value="1" />
+							<input type="hidden" name="editarCondutor" value="<?php echo $pessoa['id']; ?>" />
 							<input type="hidden" name="Sucesso" id="Sucesso" />
 							<input type="submit" value="GRAVAR" class="btn btn-theme btn-lg btn-block">
 						</div>
@@ -561,6 +641,37 @@ if($ver_doc == 0){
 	  	</div>
 	</div>
 </section>
+<?php }else{ ?>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+			<h3>CADASTRO DE CONDUTOR</h3>
+            <p><?php if(isset($men)){echo $men;} ?></p>
+            </div>
+		</div>
+	  	<div class="row">
+	  		<div class="col-md-offset-1 col-md-10">
+				<form class="form-horizontal" role="form" action="editar.php?p=condutor" method="post">
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+						<p>O CPF <?php echo $cpf ?> já existe no sistema. Gostaria de editá-lo?</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+                        	
+							<input type="hidden" name="carregarCondutor" value="<?php echo $ver_doc; ?>" />
+							<input type="hidden" name="Sucesso" id="Sucesso" />
+							<input type="submit" value="Carregar" class="btn btn-theme btn-lg btn-block">
+						</div>
+					</div>
+				</form>
+	  		</div>	
+	  	</div>
+	</div>
+</section>
+<?php } ?>
 
 <?php break; ?>
 <?php } ?>
