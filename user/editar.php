@@ -46,7 +46,7 @@ switch($p){
 		}
 		
 	}else{
-		header("Location: cadastro.php?p=juridica&m=1");
+		
 	
 	}
 
@@ -78,6 +78,13 @@ switch($p){
 		}	
 		
 	}
+
+
+if(isset($_POST['carregarJuridica'])){
+	$pessoa = recuperaDados("lej_pj",$_POST['carregarJuridica'],"id");
+}
+
+if($ver_doc == 0){
 
 ?>
 
@@ -172,6 +179,38 @@ switch($p){
 		</div>		
 	</div>
 </section>
+<?php }else{ ?>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+			<h3>CADASTRO DE PESSOA JURÌDICA</h3>
+            <p><?php if(isset($men)){echo $men;} ?></p>
+            </div>
+		</div>
+	  	<div class="row">
+	  		<div class="col-md-offset-1 col-md-10">
+				<form class="form-horizontal" role="form" action="editar.php?p=juridica" method="post">
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+						<p>O CPF <?php echo $cnpj ?> já existe no sistema. Gostaria de editá-lo?</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+                        	
+							<input type="hidden" name="carregarJuridica" value="<?php echo $ver_doc; ?>" />
+							<input type="hidden" name="Sucesso" id="Sucesso" />
+							<input type="submit" value="Carregar" class="btn btn-theme btn-lg btn-block">
+						</div>
+					</div>
+				</form>
+	  		</div>	
+	  	</div>
+	</div>
+</section>
+<?php } ?>
+
 <?php 
 
 	break;
@@ -203,7 +242,7 @@ switch($p){
 if(isset($_POST ['cadastrarFisica'])){
 	$ver_doc = verificaDoc($cpf);
 	if($ver_doc == 0){
-		$sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`,`tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `obs`) VALUES (NULL, '', '', '$nome', '$cpf', '$tipo_doc', '$rg', '$cnh', '$data_nasc', '$nacionalidade', '$estado_civil', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '', '', '', '$obs');";
+		$sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`,`tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `obs`) VALUES (NULL, '', '6', '$nome', '$cpf', '$tipo_doc', '$rg', '$cnh', '$data_nasc', '$nacionalidade', '$estado_civil', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '', '', '', '$obs');";
 		
 		$query_insert = mysqli_query($con, $sql_insert);
 		if($query_insert){

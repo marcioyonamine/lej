@@ -194,18 +194,19 @@ function verificaDoc($doc){
 		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc'";
 		$query = mysqli_query($con,$sql);
 		$n = mysqli_num_rows($query);
-
 	}
-		if($n > 0){
-			$x = mysqli_fetch_array($query);
-			return $x['id'];	
-		}else{
-			return 0;			
-		}
-
-
+	if($n > 0){
+		$x = mysqli_fetch_array($query);
+		return $x['id'];	
+	}else{
+		return 0;			
+	}
 }
 
+function geraCondutor(){
+	$con = bancoMysqli();
+	$sql = "SELECT id,";
+}
 
 
 /* ------------- classes --------------- */

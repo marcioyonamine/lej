@@ -17,3 +17,31 @@ $('.date').mask('99/99/9999');
 });
 
 </script>
+
+<script type="application/javascript">
+	$(function()
+	{
+		$('#pessoa').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#cliente').hide();
+				$('.carregando').show();
+				$.getJSON('../inc/clientes.ajax.php?pessoa=',{pessoa: $(this).val(), ajax: 'true'}, function(j)
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].id_cliente + '">' + j[i].cliente + '</option>';
+					}	
+					$('#cliente').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#cliente').html('<option value="">-- Escolha um cliente --</option>');
+			}
+		});
+	});
+</script>
