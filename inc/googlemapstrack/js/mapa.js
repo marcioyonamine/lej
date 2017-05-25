@@ -119,11 +119,23 @@ $(".form_mapas").submit(function(event) {
 	});
 });
 
+// Envia os dados do formulário 'traça rota' para o 'confirma rota'
 $(".form_envia").submit(function(event) {
 	var enderecoPartida = $("#txtEnderecoPartida").val();
 	var enderecoChegada = $("#txtEnderecoChegada").val();
+	var enderecoMeio01 = $("#txtEnderecoMeio01").val();
+	var enderecoMeio02 = $("#txtEnderecoMeio02").val();
+	var enderecoMeio03 = $("#txtEnderecoMeio03").val();	
+	var enderecoMeio04 = $("#txtEnderecoMeio04").val();
+	var enderecoMeio05 = $("#txtEnderecoMeio05").val();	
 	$("#partida").val(enderecoPartida);
 	$("#chegada").val(enderecoChegada);
+    $("#end01").val(enderecoMeio01);
+	$("#end02").val(enderecoMeio02);
+	$("#end03").val(enderecoMeio03);	
+	$("#end04").val(enderecoMeio04);
+	$("#end05").val(enderecoMeio05);	
+	
 });
 
 

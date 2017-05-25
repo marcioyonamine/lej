@@ -13,7 +13,7 @@ $pessoa = $_GET['pessoa'];
 
 $cidades = array();
 if($pessoa == 1){
-	$sql = "SELECT id,nome FROM lej_pf ORDER BY nome";
+	$sql = "SELECT id,nome FROM lej_pf WHERE funcao = '6' ORDER BY nome";
 	$res = mysqli_query($con,$sql);
 	
 	while ( $row = mysqli_fetch_array( $res ) ) {

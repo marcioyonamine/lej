@@ -11,7 +11,7 @@ echo $GLOBALS['url_system'];
 
 <?php
 
-echo verificaDoc("273.044.158-19");
+echo verificaDoc("273.044.158-19",1);
 
 
 

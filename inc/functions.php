@@ -20,12 +20,11 @@ function converterObjParaArray($data) { //função que transforma objeto vindo d
 }
 
 function nocache(){
-	echo '
-	<meta http-equiv="cache-control" content="max-age=0" />
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="0" />
-	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-	<meta http-equiv="pragma" content="no-cache" />';
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+	header('Last Modified: '. gmdate('D, d M Y H:i:s') .' GMT');
+	header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: no-cache');
+	header('Expires: 0');
 
 	
 }
@@ -197,23 +196,31 @@ function geraOpcao($meta,$order = NULL,$select = NULL){ //gera opcoes a partir d
 }
 
 
-function verificaDoc($doc){
+function verificaDoc($doc,$condutor = NULL){
+	if($condutor == 1){
+		$filter = " AND funcao = '7' "; 	
+	}else{
+		$filter = "";	
+	}
+	
 	$con = bancoMysqli();
 	if(strlen($doc) > 14){ // pj
 		$sql = "SELECT id FROM lej_pj WHERE cnpj LIKE '$doc'";
 		$query = mysqli_query($con,$sql);
 		$n = mysqli_num_rows($query);
 	}else{ //pf
-		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc'";
+		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc' $filter";
 		$query = mysqli_query($con,$sql);
 		$n = mysqli_num_rows($query);
 	}
+	echo $sql;
 	if($n > 0){
 		$x = mysqli_fetch_array($query);
 		return $x['id'];	
 	}else{
 		return 0;			
 	}
+
 }
 
 function geraCondutor(){
@@ -223,6 +230,33 @@ function geraCondutor(){
 	while($ar = mysqli_fetch_array($query)){
 		echo "<option value='".$ar['id']."'>".$ar['nome']."</option>";	
 	}
+}
+
+function recuperaCliente($id,$pessoa){
+	$con = bancoMysqli();
+	switch($pessoa){
+	case 1: //fisica
+		$cliente = recuperaDados("lej_pf",$id,"id");
+		$x['nome'] = $cliente['nome'];
+		$x['doc'] = $cliente['cpf'];
+		$x['contato'] = $cliente['nome'];
+		$x['telefone'] = $cliente['telefone01']." ".$cliente['telefone02']." ".$cliente['telefone03'];
+		$x['email'] = $cliente['email'];	
+	
+	break;
+	case 2: //juridica
+		$cliente = recuperaDados("lej_pj",$id,"id");
+		$x['nome'] = $cliente['nome'];
+		$x['doc'] = $cliente['cnpj'];
+		$x['contato'] = $cliente['contato'];
+		$x['telefone'] = $cliente['telefone01']." ".$cliente['telefone02']." ".$cliente['telefone03'];	
+		$x['email'] = $cliente['email'];	
+
+	
+	break;
+	}	
+	return $x;
+
 }
 
 
@@ -269,5 +303,35 @@ class gMaps {
     } else {
       return false;
     }
+
   }
+
+  function dados($endereco){
+	 $url = "https://maps.googleapis.com/maps/api/geocode/json?key={$this->mapsKey}&address=" . urlencode($endereco);
+    $data = json_decode($this->carregaUrl($url));
+    
+    if ($data->status === 'OK') {
+      return converterObjParaArray($data->results[0]);
+    } else {
+      return false;
+    }
+	
+ }
+
+  function enderecoFormatado($endereco){
+	 $url = "https://maps.googleapis.com/maps/api/geocode/json?key={$this->mapsKey}&address=" . urlencode($endereco);
+    $data = json_decode($this->carregaUrl($url));
+    
+    if ($data->status === 'OK') {
+      return $data->results[0]->formatted_address;
+    } else {
+      return false;
+    }
+	
+ }
+
+
+
 }
+
+

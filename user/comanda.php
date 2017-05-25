@@ -2,19 +2,26 @@
 <?php include '../inc/menu-admin.php'; ?>
  <link rel="stylesheet" type="text/css" href="../inc/googlemapstrack/css/estilo.css">
    <div class="container">
-
+      <div class="blog-header">
+        <h2 class="blog-title">Nova Comanda</h2>
+            <p>Preencha todos os campos corretamente </p>
+			<p>Os campos "Endereço Meio" não são obrigatórios. Porém, devem ser preenchidos na ordem.</p>
+      </div>
+</div>
 <section id="contact" class="home-section bg-white">
 	<div class="container">
+
 		<div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-			<h3>Nova Comanda</h3>
+
+
          </div>
 		</div>
 		<div class="row">
 		<div class="col-md-offset-1 col-md-10">
 		<div class="form-group">
 		<div class="col-md-offset-2 col-md-8"><br/>
-            <form method="post" class="form_mapas" action="comanda.php">
+            <form method="post" class="form_mapas" name="form_mapas" action="comanda.php">
 
                     <legend>Definir Rota</legend>
                         <label for="txtEnderecoPartida">Endereço de partida:</label>
@@ -51,7 +58,7 @@
 		<div class="col-md-offset-2 col-md-8"><br/>
         </div>
         </div>
-        <form method="post" class="form_envia" action="teste.php">
+        <form method="post" class="form_envia" action="confirma.php">
 
        <div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Cliente:</strong><br/>
@@ -95,13 +102,19 @@
         
         
         
+        
 
          
           <div class="form-group">
 		<div class="col-md-offset-2 col-md-8"><br/> 
          <input type="hidden" id="partida" name="partida" />
          <input type="hidden" id="chegada" name="chegada" />
-         
+         <input type="hidden" class="form-control" id="end01" name="end01" />
+         <input type="hidden" class="form-control" id="end02" name="end02" />
+         <input type="hidden" class="form-control" id="end03" name="end03" />
+         <input type="hidden" class="form-control" id="end04" name="end04" />
+         <input type="hidden" class="form-control" id="end05" name="end05" />
+
 		 <input type="submit" class="form_envia btn btn-theme btn-lg btn-block" value="Confirma Rota" />      
 
         </form>

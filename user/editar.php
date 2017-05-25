@@ -240,7 +240,7 @@ if($ver_doc == 0){
 
 //Cadastrar Nova
 if(isset($_POST ['cadastrarFisica'])){
-	$ver_doc = verificaDoc($cpf);
+	$ver_doc = verificaDoc($cpf,6);
 	if($ver_doc == 0){
 		$sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`,`tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `obs`) VALUES (NULL, '', '6', '$nome', '$cpf', '$tipo_doc', '$rg', '$cnh', '$data_nasc', '$nacionalidade', '$estado_civil', '$cep', '$numero', '$complemento', '$tel01', '$tel02', '$tel03', '', '$email', '', '', '', '', '', '$obs');";
 		
@@ -467,7 +467,7 @@ $con = bancoMysqli();
   $obs = $_POST["Observacao"];
   
   if(isset($_POST['cadastrarCondutor'])){
-	$ver_doc = verificaDoc($cpf);
+	$ver_doc = verificaDoc($cpf,1);
 	if($ver_doc == 0){
 	  
 	  $sql_insert = "INSERT INTO `lej_pf` (`id`, `id_wp`, `funcao`, `nome`, `cpf`, `tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `fixo`, `obs`) 
