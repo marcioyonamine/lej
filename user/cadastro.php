@@ -127,39 +127,21 @@ switch($p){
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Tipo de documento *:</strong><br/>
-							<select class="form-control" id="tipoDocumento" name="tipoDocumento" >
-								<?php geraOpcao("tipo_doc");?>
-							</select>
-						</div>				  
+						<div class="col-md-offset-2 col-md-4"><strong>CPF *:</strong><br/>
+							<input type="text" class="form-control cpf" id="CPF" name="CPF" placeholder="CPF" value="">
+						</div>					  
 						<div class=" col-md-4"><strong>Documento *:</strong><br/>
 							<input type="text" class="form-control rg" id="RG" name="RG" placeholder="Documento" >
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>CPF *:</strong><br/>
-							<input type="text" class="form-control cpf" id="CPF" name="CPF" placeholder="CPF" value="">
-						</div>				  
-						<div class=" col-md-4"><strong>CNH *:</strong><br/>
-							<input type="text" class="form-control" id="CCM" name="CCM" placeholder="CNH" >
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Estado civil:</strong><br/>
-							<select class="form-control" id="IdEstadoCivil" name="IdEstadoCivil" >
-								<?php geraOpcao("estado_civil");?>
-							</select>
-						</div>				  
-						<div class=" col-md-4"><strong>Data de nascimento:</strong><br/>
-							<input type="text" class="form-control date" id="datepicker01" name="DataNascimento" placeholder="Data de Nascimento" >
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Nacionalidade:</strong><br/>
-							<input type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Nacionalidade">
+						<div class="col-md-offset-2 col-md-4"><strong>Email:</strong><br/>
+						<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" >
+                        	
 						</div>				  
 						<div class=" col-md-4"><strong>CEP:</strong><br/>
-							<input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="CEP">
+                        <input type="text" class="form-control cep" id="CEP" name="CEP" placeholder="CEP">
+									
 						</div>
 					</div>
 					<div class="form-group">
@@ -169,41 +151,55 @@ switch($p){
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Número *:</strong><br/>
-							<input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero">
+                       <input type="text" class="form-control" id="Numero" name="Numero" placeholder="Numero">					
+						
 						</div>				  
 						<div class=" col-md-4"><strong>Bairro:</strong><br/>
-							<input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro" readonly >
+                          <input type="text" class="form-control" id="Bairro" name="Bairro" placeholder="Bairro" readonly >
+                      
+ 							
 						</div>
 					</div>
-					<div class="form-group">     
-						<div class="col-md-offset-2 col-md-8"><strong>Complemento *:</strong><br/>
-							<input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento">
-						</div>
-					</div>		
+	
+    
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-4"><strong>Cidade *:</strong><br/>
-							<input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade" readonly>
+                        
+                        <input type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Cidade" readonly >
+						
 						</div>
 						<div class=" col-md-4"><strong>Estado *:</strong><br/>
 							<input type="text" class="form-control" id="Estado" name="Estado" placeholder="Estado" readonly>
 						</div>
-					</div>		  
+					</div>		 
+                    					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8"><strong>Complemento *:</strong><br/>
+  <input type="text" class="form-control" id="Complemento" name="Complemento" placeholder="Complemento">
+						</div>
+					</div> 
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>E-mail *:</strong><br/>
-							<input type="text" class="form-control" id="Email" name="Email" placeholder="E-mail" >
+						<div class="col-md-offset-2 col-md-4"><strong>Telefone Fixo *:</strong><br/>
+                        <input type="text" class="form-control tel_dd" id="telefone"  maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 2765-4321" >
 						</div>				  
-						<div class=" col-md-4"><strong>Telefone #1 *:</strong><br/>
-							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone1" placeholder="Exemplo: (11) 98765-4321" >
+						<div class=" col-md-4"><strong>Celular #1:</strong><br/>
+						<input type="text" class="form-control cel_dd" id="telefone"  maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >	
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-4"><strong>Telefone #2:</strong><br/>
-							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone2" placeholder="Exemplo: (11) 98765-4321" >
+						<div class="col-md-offset-2 col-md-4"><strong>Celular #2:</strong><br/>
+					<input type="text" class="form-control cel_dd" id="telefone"  maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >		
 						</div>				  
-						<div class="col-md-4"><strong>Telefone #3:</strong><br/>
-							<input type="text" class="form-control tel_dd" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" name="Telefone3" placeholder="Exemplo: (11) 98765-4321" >
+						<div class="col-md-4"><strong>Valor do ponto:</strong><br/>
+						<input type="text" class="form-control valor_real "  maxlength="15" name="Ponto" placeholder="" >		
 						</div>
-					</div>	  
+					</div>
+                    
+                    <div class="form-group">
+						<div class="col-md-offset-2 col-md-8"><strong>Forma de pagamento *:</strong><br/>
+							<input type="text" class="form-control" name="Forma" placeholder="" >
+						</div>
+					</div> 	
+                    
 					<div class="form-group">
 						<div class="col-md-offset-2 col-md-8"><strong>Observação:</strong><br/>
 							<textarea name="Observacao" class="form-control" rows="10" placeholder=""></textarea>

@@ -44,8 +44,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comanda <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="comanda.php" title="Comanda">Inserir nova comanda</a></li>
-            <li><a href="comanda.php" title="Comanda">Listar comandas</a></li>
+            <li><a href="ordem.php" title="Comanda">Inserir nova comanda</a></li>
+            <li><a href="ordem.php" title="Comanda">Listar comandas</a></li>
 
             
             <!--

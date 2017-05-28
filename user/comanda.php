@@ -21,7 +21,7 @@
 		<div class="col-md-offset-1 col-md-10">
 		<div class="form-group">
 		<div class="col-md-offset-2 col-md-8"><br/>
-            <form method="post" class="form_mapas" name="form_mapas" action="comanda.php">
+            <form method="post" class="form_mapas" name="form_mapas" action="ordem.php">
 
                     <legend>Definir Rota</legend>
                         <label for="txtEnderecoPartida">Endereço de partida:</label>
