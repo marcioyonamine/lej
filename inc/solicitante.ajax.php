@@ -9,11 +9,19 @@ error_reporting(E_ALL);
 include "../inc/db.php";
 //mysqli_set_charset($con,"utf8");
 $con = bancoMysqli();
-$pessoa = $_GET['pessoa'];
+if(isset($_GET['pf'])){
+	$pessoa = 1;
+	$id = $_GET['pf'];	
+}
+if(isset($_GET['pj'])){
+
+	$pessoa = 2;
+	$id = $_GET['pj'];
+}
 
 $cidades = array();
 if($pessoa == 1){
-	$sql = "SELECT id,nome FROM lej_pf ORDER BY nome";
+	$sql = "SELECT id,nome FROM lej_pf WHERE id = '$id' ORDER BY nome";
 	$res = mysqli_query($con,$sql);
 	
 	while ( $row = mysqli_fetch_array( $res ) ) {
@@ -25,7 +33,7 @@ if($pessoa == 1){
 }
 
 else if($pessoa == 2){
-	$sql = "SELECT id,nome,nome_fantasia FROM lej_pj ORDER BY nome";
+	$sql = "SELECT id,nome,nome_fantasia WHERE id = '$id' FROM lej_pj ORDER BY nome";
 	$res = mysqli_query($con,$sql);
 	
 	while ( $row = mysqli_fetch_array( $res ) ) {

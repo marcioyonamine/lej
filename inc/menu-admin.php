@@ -30,7 +30,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
           <ul class="dropdown-menu">
             <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=fisica') echo 'class="active"' ?>><a href="cadastro.php?p=fisica">Cadastrar Pessoa Física</a></li>
             <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=juridica') echo 'class="active"' ?>><a href="cadastro.php?p=juridica" >Cadastrar Pessoa Jurídica</a></li>          
-            <li <?php if (basename($_SERVER['PHP_SELF']) == 'cadastro.php?p=juridica') echo 'class="active"' ?>><a href="cadastro.php?p=juridica" >Buscar</a></li>            
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'listar.php?p=pf') echo 'class="active"' ?>><a href="listar.php?p=pf" >Listar Pessoa Física</a></li>   
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'listar.php?p=pj') echo 'class="active"' ?>><a href="listar.php?p=pj" >Listar Pessoa Jurídica</a></li>            
           </ul>
         </li>
         
@@ -38,14 +39,14 @@ Multiple lines will require custom code not provided by Bootstrap. -->
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Condutor <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="cadastro.php?p=condutor" title="Módulo online">Cadastrar</a></li>
-            <li><a href="buscar.php" title="Sugestão de conteúdo" >Buscar</a></li>
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'listar.php?p=condutor') echo 'class="active"' ?>><a href="listar.php?p=condutor" >Listar Condutores</a></li>  
           </ul>
         </li>
                 <li class="dropdown">
-          <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comanda <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordem de Serviço <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="ordem.php" title="Comanda">Inserir nova comanda</a></li>
-            <li><a href="ordem.php" title="Comanda">Listar comandas</a></li>
+            <li><a href="ordem.php" title="Ordem de Serviço">Inserir O.S.</a></li>
+            <li><a href="listar.php?p=os" title="Comanda">Listar Ordem de Serviço</a></li>
 
             
             <!--
@@ -55,8 +56,23 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             <li><a href="#">One more separated link</a></li>
             -->
           </ul>
-        <li <?php if (basename($_SERVER['PHP_SELF']) == 'diario-bordo.php') echo 'class="active"' ?>><a href="diario-bordo.php" title="Meu diário de bordo" style="border: dashed 2px; height:80px;">Entregas em aberto</a></li>
-        
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="ordem.php" title="Ordem de Serviço">Por período</a></li>
+            <li><a href="ordem.php" title="Ordem de Serviço">Por condutor</a></li>
+            <li><a href="ordem.php" title="Comanda">Por cliente</a></li>
+
+            
+            <!--
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+            -->
+          </ul>
+        </li>
       </ul>
       <!--
       <form class="navbar-form navbar-left">

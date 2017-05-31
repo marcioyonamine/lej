@@ -70,13 +70,14 @@ function semAcento($string){
 //retorna data d/m/y de mysql/date(a-m-d)
 function exibirDataBr($data){ 
 	$timestamp = strtotime($data); 
-	return date('Y/m/d', $timestamp);
+	return date('d/m/Y', $timestamp);
 }
 
-//retorna data d/m/y de mysql/date(a-m-d)
-function exibirDataBrOrdem($data){ 
-	$timestamp = strtotime($data); 
-	return date('d/m/Y', $timestamp);
+//retorna data mysql/date (a-m-d) de data/br (d/m/a)
+function exibirDataMysql($data){ 
+	list ($dia, $mes, $ano) = explode ('/', $data);
+	$data_mysql = $ano.'-'.$mes.'-'.$dia;
+	return $data_mysql;
 }
 
 
@@ -209,9 +210,18 @@ function verificaDoc($doc,$condutor = NULL){
 		$query = mysqli_query($con,$sql);
 		$n = mysqli_num_rows($query);
 	}else{ //pf
-		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc' $filter";
+		if($condutor == 1){
+		$filter = ""; 	
+		$sql = "SELECT id FROM lej_funcionarios WHERE cpf LIKE '$doc' $filter";
 		$query = mysqli_query($con,$sql);
 		$n = mysqli_num_rows($query);
+
+		}else{
+		$sql = "SELECT id FROM lej_pf WHERE cpf LIKE '$doc'";
+		$query = mysqli_query($con,$sql);
+		$n = mysqli_num_rows($query);	}
+		
+	
 	}
 	echo $sql;
 	if($n > 0){
@@ -223,12 +233,16 @@ function verificaDoc($doc,$condutor = NULL){
 
 }
 
-function geraCondutor(){
+function geraCondutor($id = NULL){
 	$con = bancoMysqli();
-	$sql = "SELECT id,nome FROM lej_pf WHERE funcao = '7' ORDER BY nome";
+	$sql = "SELECT id,nome FROM lej_funcionarios ORDER BY nome";
 	$query = mysqli_query($con,$sql);
 	while($ar = mysqli_fetch_array($query)){
-		echo "<option value='".$ar['id']."'>".$ar['nome']."</option>";	
+		if($id == $ar['id']){
+			echo "<option value='".$ar['id']."' selected='selected'>".$ar['nome']."</option>";	
+		}else{
+			echo "<option value='".$ar['id']."'>".$ar['nome']."</option>";	
+		}
 	}
 }
 
@@ -259,6 +273,32 @@ function recuperaCliente($id,$pessoa){
 
 }
 
+function retornaEndereco($cep){
+	$dados = array();
+	$reg = simplexml_load_file("http://cep.republicavirtual.com.br/web_cep.php?formato=xml&cep=" . $cep);
+	$dados['sucesso'] = (string) $reg->resultado;
+	$dados['rua']     = (string) $reg->tipo_logradouro . ' ' . $reg->logradouro;
+	$dados['bairro']  = (string) $reg->bairro;
+	$dados['cidade']  = (string) $reg->cidade;
+	$dados['estado']  = (string) $reg->uf;
+	return $dados;
+	
+	
+	
+}
+
+function numOrdem($id){
+	$con = bancoMysqli();
+	$sql = "SELECT id FROM lej_numero WHERE os = '$id'";
+	$query = mysqli_query($con,$sql);
+	$n = mysqli_num_rows($query);
+	if($n > 0){
+		$f = mysqli_fetch_array($query);
+		return $f['id']; 	
+	}else{
+		return NULL;	
+	}	
+}
 
 /* ------------- classes --------------- */
 

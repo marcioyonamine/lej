@@ -80,9 +80,71 @@ $('.date').mask('99/99/9999');
 			else
 			{
 				$('#cliente').html('<option value="">-- Escolha um cliente --</option>');
+				
 			}
 		});
 	});
 </script>
-
-
+<!--
+<script type="application/javascript">
+	$(function()
+	{
+		if($('#pessoa').val() == 1){
+		$('#cliente').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#solicitante').hide();
+				$('.carregando').show();
+				$.getJSON('../inc/solicitante.ajax.php?pf=',{cliente: $(this).val(), ajax: 'true'}, function(j) 
+				
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].id_solicitante + '">' + j[i].solicitante + '</option>';
+					}	
+					$('#solicitante').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#solicitante').html('<option value="">-- Escolha um solicitante --</option>');
+				
+			}
+		});
+		}else
+		if($('#pessoa').val() == 2){
+				$('#cliente').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#solicitante').hide();
+				$('.carregando').show();
+				$.getJSON('../inc/solicitante.ajax.php?pj=',{cliente: $(this).val(), ajax: 'true'}, function(j) 
+				
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].id_solicitante + '">' + j[i].solicitante + '</option>';
+					}	
+					$('#solicitante').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#solicitante').html('<option value="">-- Escolha um solicitante --</option>');
+				
+			}
+		});	
+			
+		}
+		
+		
+		
+	});
+</script>
+-->
