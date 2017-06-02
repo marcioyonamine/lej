@@ -41,6 +41,9 @@ $telefone = $cliente['telefone01']."/".$cliente['telefone02']."/".$cliente['tele
 $condutor = recuperaDados("lej_funcionarios",$dados['condutor'],"id");
 
 
+// Preencher com endereço da empresa
+$end_lej01 = "Rua Diogo da Costa, 30 - Vila Mazzei";
+$end_lej02 = "Sâo Paulo /SP - (11) 2338-3668 / (11) 94730-7045";
 
 
 
@@ -72,11 +75,11 @@ $l=7; //DEFINE A ALTURA DA LINHA
    
    $pdf->SetXY($x, 22);
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(53,$l,utf8_decode("Endereço L1"),0,0,'L');
+   $pdf->Cell(53,$l,utf8_decode($end_lej01),0,0,'L');
 
    $pdf->SetXY($x, 27);
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(53,$l,utf8_decode("Endereço L2"),0,0,'L');
+   $pdf->Cell(53,$l,utf8_decode($end_lej02),0,0,'L');
 
    $pdf->SetXY(113, 25);
    $pdf->SetFont('Arial','', 13);
@@ -119,9 +122,9 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->Cell(40,$l,utf8_decode("PLACA: ".$condutor['placa']),0,0,'L');
 
 
-   $pdf->SetXY($x, 98);
-   $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(57,$l,utf8_decode($condutor['telefone02']." / ".$condutor['telefone03']),0,0,'L');
+   //$pdf->SetXY($x, 98);
+   //$pdf->SetFont('Arial','', 10);
+   //$pdf->Cell(57,$l,utf8_decode($condutor['telefone02']." / ".$condutor['telefone03']),0,0,'L');
 
    $pdf->SetXY($x, 105);
    $pdf->SetFont('Arial','', 12);
@@ -155,11 +158,11 @@ $l=7; //DEFINE A ALTURA DA LINHA
    
    $pdf->SetXY($x, 22+$c);
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(53,$l,utf8_decode("Endereço L1"),0,0,'L');
+   $pdf->Cell(53,$l,utf8_decode($end_lej01),0,0,'L');
 
    $pdf->SetXY($x, 27+$c);
    $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(53,$l,utf8_decode("Endereço L2"),0,0,'L');
+   $pdf->Cell(53,$l,utf8_decode($end_lej02),0,0,'L');
 
    $pdf->SetXY(113, 25+$c);
    $pdf->SetFont('Arial','', 13);
@@ -202,9 +205,9 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->Cell(40,$l,utf8_decode("PLACA: ".$condutor['placa']),0,0,'L');
 
 
-   $pdf->SetXY($x, 98+$c);
-   $pdf->SetFont('Arial','', 10);
-   $pdf->Cell(57,$l,utf8_decode($condutor['telefone02']." / ".$condutor['telefone03']),0,0,'L');
+   //$pdf->SetXY($x, 98+$c);
+   //$pdf->SetFont('Arial','', 10);
+   //$pdf->Cell(57,$l,utf8_decode($condutor['telefone02']." / ".$condutor['telefone03']),0,0,'L');
 
    $pdf->SetXY($x, 105+$c);
    $pdf->SetFont('Arial','', 12);

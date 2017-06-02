@@ -46,7 +46,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordem de Serviço <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="ordem.php" title="Ordem de Serviço">Inserir O.S.</a></li>
-            <li><a href="listar.php?p=os" title="Comanda">Listar Ordem de Serviço</a></li>
+            <li><a href="listar.php?p=os_abertas" title="Comanda">Listar Ordem de Serviço Abertas</a></li>
+            <li><a href="listar.php?p=os_fechadas" title="Comanda">Listar Ordem de Serviço Fechadas</a></li>
 
             
             <!--

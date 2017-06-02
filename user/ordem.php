@@ -42,7 +42,7 @@ switch($p){
         </div>
         <form method="post" class="form_envia" action="ordem.php?p=os">
 
-       <div class="form-group">
+       <!--<div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Tipo:</strong><br/>
 					<select name="tipo_os" id="tipo_os" class="form-control">
                     <option value=0>Escolha o tipo de serviço</option>
@@ -51,7 +51,7 @@ switch($p){
 
                     </select>
 			</div>
-		</div>
+		</div>-->
        <div class="form-group">
 			<div class="col-md-offset-2 col-md-8"><strong>Cliente:</strong><br/>
 					<select name="pessoa" id="pessoa" class="form-control">
@@ -136,7 +136,7 @@ switch($p){
 	case "os":
 	$con = bancoMysqli();
 	if(isset($_POST['criarOS'])){
-		$tipo_os = $_POST['tipo_os'];
+		//$tipo_os = $_POST['tipo_os'];
 		$pessoa = $_POST['pessoa'];
 		$cliente = $_POST['cliente'];
 		$sql_insere_os = "INSERT INTO `lej_os` (`id`, `pessoa`, `cliente`, `publicado`) VALUES (NULL, '$pessoa', '$cliente', '1')";
@@ -305,7 +305,7 @@ $num = numOrdem($os['id']);
     
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-4"><strong>Data:</strong><br/>
-				<input type="text" class="form-control datepicker" id="Numero" name="data" value="<?php echo exibirDataBr($os['data']) ?>">
+				<input type="text" class="form-control datepicker" id="Numero" name="data" value="<?php if($os['data'] != '0000-00-00'){ echo exibirDataBr($os['data']); } ?>">
 			</div>				  
 			<div class=" col-md-4"><strong>Saída:</strong><br/>
 					<input type="text" class="form-control hora" id="Complemento" name="saida" value="<?php echo $os['saida'] ?>">
