@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 31-Maio-2017 às 14:14
+-- Generation Time: 06-Jun-2017 às 01:21
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `lej`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `lej_adiantamentos`
+--
+
+CREATE TABLE `lej_adiantamentos` (
+  `id` int(11) NOT NULL,
+  `funcionario` tinyint(4) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `data` date NOT NULL,
+  `obs` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `lej_adiantamentos`
+--
+
+INSERT INTO `lej_adiantamentos` (`id`, `funcionario`, `valor`, `data`, `obs`) VALUES
+(12, 8, '100.00', '2017-06-08', 'Pagar o pão.');
 
 -- --------------------------------------------------------
 
@@ -183,13 +204,6 @@ CREATE TABLE `lej_funcionarios` (
 --
 
 INSERT INTO `lej_funcionarios` (`id`, `id_wp`, `funcao`, `nome`, `cpf`, `tipo_doc`, `rg`, `cnh`, `data_nascimento`, `nacionalidade`, `estado_civil`, `cep`, `numero`, `complemento`, `telefone01`, `telefone02`, `telefone03`, `whatsapp`, `email`, `cod_banco`, `agencia`, `conta`, `moto_modelo`, `placa`, `renavam`, `fixo`, `ponto`, `obs`) VALUES
-(1, 0, 0, '', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(2, 0, 0, 'teste123', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(3, 0, 0, '', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(4, 0, 0, 'teste123', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(5, 0, 0, 'teste123', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(6, 0, 0, 'Marcio Yonamine', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
-(7, 0, 0, 'Marcio Yonamine', '', 0, '', '', '0000-00-00', '', 0, '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '0.00', '0.00', ''),
 (8, 0, 0, 'Marcio Yonamine', '273.044.158-19', 0, '28642582-8', '', '0000-00-00', '', 0, '03444-090', '386', 'Casa', '', '(11) 98888-1198', '(11) 98888-2020', '', 'marcioyonamine@gmail.com', 0, '', '', '', '252525', '303030', '99999999.99', '20000000.00', '');
 
 -- --------------------------------------------------------
@@ -208,8 +222,8 @@ CREATE TABLE `lej_numero` (
 --
 
 INSERT INTO `lej_numero` (`id`, `os`) VALUES
-(000003, 56),
-(000002, 57);
+(000005, 60),
+(000006, 61);
 
 -- --------------------------------------------------------
 
@@ -272,8 +286,8 @@ CREATE TABLE `lej_os` (
 --
 
 INSERT INTO `lej_os` (`id`, `pessoa`, `cliente`, `condutor`, `solicitante`, `valor_cliente`, `valor_condutor`, `data`, `saida`, `referencia`, `desconto`, `hora_aceite`, `minimo`, `fechamento`, `nota_fiscal`, `instrucao_nota`, `instrucao_boleto`, `n_vias`, `obs`, `publicado`) VALUES
-(56, 1, 33, 8, 'Marcio Yonamine', '25.00', '10.00', '2017-06-20', '20:00:00', 0, 0, '0000-00-00 00:00:00', '10:00:00', '20:00:00', '', '', '', 0, 'Teste123', 1),
-(57, 1, 33, 8, 'Marcio Yonamine', '25.00', '10.00', '2017-05-25', '20:00:00', 0, 0, '0000-00-00 00:00:00', '12:00:00', '13:00:00', '', '', '', 0, 'Teste123', 1);
+(60, 1, 33, 8, 'Marcio Yonamine', '300.00', '250.00', '2017-06-06', '20:00:00', 0, 0, '0000-00-00 00:00:00', '00:00:00', '00:00:00', '', '', '', 0, 'Teste 123', 1),
+(61, 2, 4, 8, 'Marcio Yonamine', '500.00', '200.00', '2017-06-09', '23:00:00', 0, 0, '0000-00-00 00:00:00', '00:00:00', '00:00:00', '', '', '', 0, 'Teste123', 1);
 
 -- --------------------------------------------------------
 
@@ -344,14 +358,17 @@ CREATE TABLE `lej_pj` (
 --
 
 INSERT INTO `lej_pj` (`id`, `id_wp`, `funcao`, `nome`, `nome_fantasia`, `cnpj`, `inscricao`, `cep`, `numero`, `complemento`, `email`, `contato01`, `cargo01`, `contato02`, `cargo02`, `contato03`, `cargo03`, `telefone01`, `telefone02`, `telefone03`, `ponto`, `forma_pagamento`, `obs`, `data_atualizacao`) VALUES
-(1, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', '0000-00-00 00:00:00'),
-(2, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', '0000-00-00 00:00:00'),
-(3, 0, 0, 'admin', '', '11.111.111/1111-11', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', '0000-00-00 00:00:00'),
 (4, 0, 0, 'Marcio Yonamine Inc.', 'Estúdio Amarelinha LabCom', '33.333.333/3333-33', 'Isento', '03444-090', '386', 'Casa', 'marcioyonamine@gmail.com', 'Marcio Yonamine', 'Presidente', 'Thiago Negro', 'Desenvolvedor', 'Yzadora', 'Designer', '(11) 2094-3389', '(11) 98888-1198', '', '50.00', 'Faturado mensal', 'Teste 123', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `lej_adiantamentos`
+--
+ALTER TABLE `lej_adiantamentos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lej_bancos`
@@ -403,6 +420,11 @@ ALTER TABLE `lej_pj`
 --
 
 --
+-- AUTO_INCREMENT for table `lej_adiantamentos`
+--
+ALTER TABLE `lej_adiantamentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
 -- AUTO_INCREMENT for table `lej_bancos`
 --
 ALTER TABLE `lej_bancos`
@@ -416,7 +438,7 @@ ALTER TABLE `lej_funcionarios`
 -- AUTO_INCREMENT for table `lej_numero`
 --
 ALTER TABLE `lej_numero`
-  MODIFY `id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `lej_opcoes`
 --
@@ -426,7 +448,7 @@ ALTER TABLE `lej_opcoes`
 -- AUTO_INCREMENT for table `lej_os`
 --
 ALTER TABLE `lej_os`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `lej_pf`
 --

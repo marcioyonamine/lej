@@ -38,8 +38,10 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Condutor <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="cadastro.php?p=condutor" title="Módulo online">Cadastrar</a></li>
+            <li><a href="cadastro.php?p=condutor" title="">Cadastrar</a></li>
             <li <?php if (basename($_SERVER['PHP_SELF']) == 'listar.php?p=condutor') echo 'class="active"' ?>><a href="listar.php?p=condutor" >Listar Condutores</a></li>  
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'adiantamento.php?p=insere') echo 'class="active"' ?>><a href="adiantamento.php?p=insere" >Inserir adiantamento</a></li>  
+            <li <?php if (basename($_SERVER['PHP_SELF']) == 'adiantamento.php?p=lista') echo 'class="active"' ?>><a href="adiantamento.php?p=lista" >Listar adiantamentos</a></li>  
           </ul>
         </li>
                 <li class="dropdown">
@@ -61,9 +63,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="ordem.php" title="Ordem de Serviço">Por período</a></li>
-            <li><a href="ordem.php" title="Ordem de Serviço">Por condutor</a></li>
-            <li><a href="ordem.php" title="Comanda">Por cliente</a></li>
+            <li><a href="relatorio.php?p=condutor" title="Ordem de Serviço">Por condutor</a></li>
+            <li><a href="relatorio.php?p=cliente" title="Comanda">Por cliente</a></li>
 
             
             <!--
