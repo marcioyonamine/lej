@@ -107,7 +107,7 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->Cell(57,$l,utf8_decode($endereco2),0,0,'L');
       $pdf->SetXY($x+20, 62);
    $pdf->SetFont('Arial','', 12);
-   $pdf->Cell(57,$l,utf8_decode($dados['obs']),0,0,'L');
+   $pdf->MultiCell(57,$l,utf8_decode($dados['obs']));
 
 	// Condutor
 
@@ -190,7 +190,7 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->Cell(57,$l,utf8_decode($endereco2),0,0,'L');
       $pdf->SetXY($x+20, 62+$c);
    $pdf->SetFont('Arial','', 12);
-   $pdf->Cell(57,$l,utf8_decode($dados['obs']),0,0,'L');
+   $pdf->MultiCell(57,$l,utf8_decode($dados['obs']));
 
 	// Condutor
 

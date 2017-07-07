@@ -254,6 +254,7 @@ if(isset($id_condutor)){
 					</tbody>
 				</table>
 			</div>
+<?php if(isset($id_condutor)){ ?>
             			<div class="table-responsive list_info"><h3>Adiantamentos</h3>
                         <?php //echo $sql_busca_adianta; ?>
 				<table class="table table-condensed"><script type=text/javascript language=JavaScript src=../js/find2.js> </script>
@@ -290,10 +291,10 @@ while($pessoa = mysqli_fetch_array($query_busca_adianta)){
 				</table>
 			</div>
 <h3>Do dia <?php echo exibirDataBr($data_inicio); ?> a <?php echo exibirDataBr($data_inicio); ?> há um total de <strong><?php echo dinheiroParaBr($soma) ?></strong> em serviços e <strong><?php echo dinheiroParaBr($soma_adianta) ?></strong> em adiantamentos, totalizando: <strong><?php echo dinheiroParaBr($soma - $soma_adianta); ?> </strong></h3>
+<?php } ?>
 
 		</div>
 	</section>
-
 
 
 <?php 
