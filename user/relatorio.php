@@ -221,7 +221,7 @@ if(isset($id_cliente)){
 }
 if(isset($id_condutor)){
 	$valor = $pessoa['valor_condutor'];	
-		$valor = $pessoa['valor_cliente'];
+	//	$valor = $pessoa['valor_cliente'];
 	if($pessoa['pessoa'] == 1){
 		$cli = recuperaDados("lej_pf",$pessoa['cliente'],"id");	
 		$cliente = $cli['nome'];
