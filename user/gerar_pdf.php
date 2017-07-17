@@ -70,8 +70,10 @@ $l=7; //DEFINE A ALTURA DA LINHA
 
 
    $pdf->SetXY($x, 15);
-   $pdf->SetFont('Arial','', 20);
-   $pdf->Cell(53,$l,utf8_decode("L&J Transportes"),0,0,'L');
+	$pdf->Image('../assets/img/logo_os.png',15,10);
+   	$pdf->Ln(20);
+   //$pdf->SetFont('Arial','', 20);
+   //$pdf->Cell(53,$l,utf8_decode("L&J Transportes"),0,0,'L');
    
    $pdf->SetXY($x, 22);
    $pdf->SetFont('Arial','', 10);
@@ -106,8 +108,8 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->SetFont('Arial','', 12);
    $pdf->Cell(57,$l,utf8_decode($endereco2),0,0,'L');
       $pdf->SetXY($x+20, 62);
-   $pdf->SetFont('Arial','', 12);
-   $pdf->MultiCell(57,$l,utf8_decode($dados['obs']));
+   $pdf->SetFont('Arial','', 10);
+   $pdf->MultiCell(120,$l,utf8_decode($dados['obs']));
 
 	// Condutor
 
@@ -153,8 +155,10 @@ $l=7; //DEFINE A ALTURA DA LINHA
 
 
    $pdf->SetXY($x, 15+$c);
-   $pdf->SetFont('Arial','', 20);
-   $pdf->Cell(53,$l,utf8_decode("L&J Transportes"),0,0,'L');
+   $pdf->Image('../assets/img/logo_os.png',15,10+$c);
+   $pdf->Ln(20);
+   //$pdf->SetFont('Arial','', 20);
+   //$pdf->Cell(53,$l,utf8_decode("L&J Transportes"),0,0,'L');
    
    $pdf->SetXY($x, 22+$c);
    $pdf->SetFont('Arial','', 10);
@@ -188,9 +192,9 @@ $l=7; //DEFINE A ALTURA DA LINHA
    $pdf->SetXY($x, 54+$c);
    $pdf->SetFont('Arial','', 12);
    $pdf->Cell(57,$l,utf8_decode($endereco2),0,0,'L');
-      $pdf->SetXY($x+20, 62+$c);
-   $pdf->SetFont('Arial','', 12);
-   $pdf->MultiCell(57,$l,utf8_decode($dados['obs']));
+   $pdf->SetXY($x+20, 62+$c);
+   $pdf->SetFont('Arial','', 10);
+   $pdf->MultiCell(120,$l,utf8_decode($dados['obs']));
 
 	// Condutor
 

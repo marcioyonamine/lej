@@ -165,7 +165,7 @@ if(isset($_POST['gerarRelatorioCondutor'])){
 	$data_inicio = exibirDataMysql($_POST['data_inicio']);
 	$data_fim = exibirDataMysql($_POST['data_fim']);
 	$id_condutor = $_POST['condutor'];
-	$sql_busca = "SELECT * FROM lej_os, lej_numero WHERE data >= '$data_inicio' AND data <= '$data_fim' AND condutor = '$id_condutor' AND lej_os.id = lej_numero.os ORDER BY lej_numero.id DESC";
+	$sql_busca = "SELECT * FROM lej_os, lej_numero WHERE data >= '$data_inicio' AND data <= '$data_fim' AND condutor = '$id_condutor' AND lej_os.id = lej_numero.os AND lej_os.publicado = '1' ORDER BY lej_numero.id DESC";
 	$query_busca = mysqli_query($con,$sql_busca);
 
 	// relatório de adiantamento
@@ -183,7 +183,7 @@ if(isset($_POST['gerarRelatorioCliente'])){
 	$data_inicio = exibirDataMysql($_POST['data_inicio']);
 	$data_fim = exibirDataMysql($_POST['data_fim']);
 	$id_cliente = $_POST['cliente'];
-	$sql_busca = "SELECT * FROM lej_os, lej_numero WHERE data >= '$data_inicio' AND data <= '$data_fim' AND cliente = '$id_cliente' AND lej_os.id = lej_numero.os ORDER BY lej_numero.id DESC";
+	$sql_busca = "SELECT * FROM lej_os, lej_numero WHERE data >= '$data_inicio' AND data <= '$data_fim' AND cliente = '$id_cliente' AND lej_os.id = lej_numero.os  AND lej_os.publicado = '1'  ORDER BY lej_numero.id DESC";
 	$query_busca = mysqli_query($con,$sql_busca);
 
 

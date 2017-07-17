@@ -151,6 +151,7 @@ while($pessoa = mysqli_fetch_array($query_lista)){
 break;
 case "os":
 
+
 ?>
 
   	<section id="list_items">
@@ -170,7 +171,7 @@ case "os":
 					</thead>
 					<tbody>
 <?php
-$sql_lista = "SELECT * FROM lej_os ORDER BY id DESC";
+$sql_lista = "SELECT * FROM lej_os AND publicado = '1' ORDER BY id DESC";
 $query_lista = mysqli_query($con,$sql_lista);
 while($ar = mysqli_fetch_array($query_lista)){
 	if($ar['pessoa'] == 1){
@@ -216,12 +217,39 @@ break;
 <?php 
 break;
 case "os_abertas":
+/*
+array(3) {
+  ["apagarOS"]=>
+  string(2) "62"
+  ["id_os"]=>
+  string(2) "62"
+  ["senha"]=>
+  string(6) "040717"
+}
+*/
+if(isset($_POST['apagarOS'])){
+	if($_POST['senha'] == '040717'){
+		$con = bancoMysqli();	
+		$id = $_POST['apagarOS'];
+		$sql_apagar = "UPDATE lej_os SET publicado = '0' WHERE id = '$id'";
+		$query_pagar = mysqli_query($con,$sql_apagar);
+		if($query_pagar){
+			$mensagem = "O.S. apagada";
+		}else{
+			$mensagem = "Erro ao apagar O.S.. Tente novamente. ";
+		}
+	}else{
+			$mensagem = "A senha não confere"; 	
+	}
+	
+}
 
 ?>
 
   	<section id="list_items">
 		<div class="container">
 			 <h1>Ordem de Serviço Abertas</h1>
+             <p><?php if(isset($mensagem)){echo $mensagem;}?></p>
 			<div class="table-responsive list_info">
 				<table class="table table-condensed"><script type=text/javascript language=JavaScript src=../js/find2.js> </script>
 					<thead>
@@ -231,12 +259,14 @@ case "os_abertas":
 							<td>Cliente</td>
 							<td>Condutor</td>
 							<td></td>
+   							<td></td>
+   							<td>Senha para apagar</td>
 
 						</tr>
 					</thead>
 					<tbody>
 <?php
-$sql_lista = "SELECT * FROM lej_os WHERE valor_cliente = '0' OR valor_condutor = '0' ORDER BY id DESC";
+$sql_lista = "SELECT * FROM lej_os WHERE (valor_cliente = '0' OR valor_condutor = '0')  AND publicado = '1'  ORDER BY id DESC";
 $query_lista = mysqli_query($con,$sql_lista);
 while($ar = mysqli_fetch_array($query_lista)){
 	if($ar['pessoa'] == 1){
@@ -261,7 +291,16 @@ while($ar = mysqli_fetch_array($query_lista)){
 <input type="hidden" name="id_os" value="<?php echo $ar['id'] ?>">
 <input type="submit" value="editar" class="btn btn-theme btn-lg btn-block">
 </form></td>
-<td></td>
+<td><form action="listar.php?p=os_abertas" method="post">
+<input type="hidden" name="apagarOS" value="<?php echo $ar['id'] ?>">
+<input type="hidden" name="id_os" value="<?php echo $ar['id'] ?>">
+<input type="submit" value="Apagar" class="btn btn-theme btn-lg btn-block">
+
+</td>
+<td>
+<input type="password" class="form-control" name="senha" />
+</form>
+</td>
 
 </tr>
 
@@ -302,7 +341,7 @@ case "os_fechadas":
 					</thead>
 					<tbody>
 <?php
-$sql_lista = "SELECT * FROM lej_os WHERE valor_cliente <> '0' AND valor_condutor <> '0' ORDER BY id DESC";
+$sql_lista = "SELECT * FROM lej_os WHERE valor_cliente <> '0' AND valor_condutor <> '0'  AND publicado = '1'  ORDER BY id DESC";
 $query_lista = mysqli_query($con,$sql_lista);
 while($ar = mysqli_fetch_array($query_lista)){
 	if($ar['pessoa'] == 1){

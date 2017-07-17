@@ -35,6 +35,11 @@ Multiple lines will require custom code not provided by Bootstrap. -->
           </ul>
         </li>
         
+        
+        <?php // condutores
+		if($usuario->ID != 6){
+		
+		?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Condutor <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -44,6 +49,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             <li <?php if (basename($_SERVER['PHP_SELF']) == 'adiantamento.php?p=lista') echo 'class="active"' ?>><a href="adiantamento.php?p=lista" >Listar adiantamentos</a></li>  
           </ul>
         </li>
+        <?php } ?>
+
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordem de Serviço <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -60,12 +67,16 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             -->
           </ul>
         </li>
+                <?php // condutores
+		if($usuario->ID != 6){
+		
+		?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" style="height:80px; text-shadow:none;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="relatorio.php?p=condutor" title="Ordem de Serviço">Por condutor</a></li>
             <li><a href="relatorio.php?p=cliente" title="Comanda">Por cliente</a></li>
-
+<?php } ?>
             
             <!--
             <li role="separator" class="divider"></li>
