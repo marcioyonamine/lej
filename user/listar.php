@@ -361,11 +361,15 @@ while($ar = mysqli_fetch_array($query_lista)){
 <td><?php echo $tipo; ?></td>
 <td><?php echo $p_cliente; ?></td>
 <td><?php echo $condutor['nome']; ?></td>
-<td><form action="ordem.php?p=os" method="post">
+<td><?php if($usuario->ID != 6 AND $usuario->ID != 3 ){?><form action="ordem.php?p=os" method="post">
 <input type="hidden" name="carregarOS" value="<?php echo $ar['id'] ?>">
 <input type="hidden" name="id_os" value="<?php echo $ar['id'] ?>">
 <input type="submit" value="editar" class="btn btn-theme btn-lg btn-block">
-</form></td>
+</form><?php }else{ ?>
+ <a href="gerar_pdf.php?n=<?php echo $ar['id']?>" role="button" class="btn btn-info" target="_blank">Gerar PDF</a>     
+
+<?php } ?>
+</td>
 <td></td>
 
 </tr>

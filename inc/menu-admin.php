@@ -37,7 +37,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         
         
         <?php // condutores
-		if($usuario->ID != 6){
+		if($usuario->ID != 6 AND $usuario->ID != 3){
 		
 		?>
         <li class="dropdown">
@@ -67,8 +67,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             -->
           </ul>
         </li>
-                <?php // condutores
-		if($usuario->ID != 6){
+                <?php // relatórios
+		if($usuario->ID != 6 AND $usuario->ID != 3){
 		
 		?>
         <li class="dropdown">

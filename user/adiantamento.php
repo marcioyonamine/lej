@@ -89,7 +89,7 @@ while($ad = mysqli_fetch_array($query_busca)){
 		</div>
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-4"><strong>Data:</strong><br/>
-				<input type="text" class="form-control datepicker" id="Minimo" name="data_inicio" >
+				<input type="text" class="form-control datepicker" id="Minimo" name="data_inicio" value="<?php echo date('d/m/Y'); ?>" >
 			</div>				  
 			<div class=" col-md-4"><strong>valor:</strong><br/>
 					<input type="text" class="form-control valor_real" id="saida" name="valor" >
