@@ -12,6 +12,7 @@ endif;
 //Carrega os arquivos de funções
 require "../inc/functions.php";
 
+set_time_limit(0);
 
 ?>
 <!DOCTYPE html>
