@@ -1,5 +1,6 @@
 <?php 
 //Carrega WP
+
 require_once("../../wp-load.php");
 $user = wp_get_current_user();
 if(!is_user_logged_in()): // Impede acesso de pessoas não autorizadas
@@ -18,7 +19,6 @@ set_time_limit(0);
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-	<?php nocache(); ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
