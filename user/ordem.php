@@ -159,7 +159,7 @@ switch($p){
 	  $fechamento = $_POST['Fechamento'];
 	  $valor_cliente = dinheiroDeBr($_POST['valor_cliente']);
 	  $valor_condutor = dinheiroDeBr($_POST['valor_condutor']);
-	  
+	  $n_os = $_POST['n_os'];
 	$sql_update_os = "UPDATE lej_os SET
 		solicitante = 	  '$solicitante',
 	  condutor = '$condutor',
@@ -168,6 +168,8 @@ switch($p){
 	  obs = '$anotacao',
 	  minimo = '$minimo',
 	  fechamento = '$fechamento',
+	  n_os = '$n_os',
+
 	  valor_cliente = '$valor_cliente',
 	  valor_condutor = '$valor_condutor'
 	  WHERE id = '$id'";
@@ -333,7 +335,14 @@ $num = numOrdem($os['id']);
 					<input type="text" class="form-control valor_real" id="valor_condutor" name="valor_condutor" value="<?php echo dinheiroParaBr($os['valor_condutor']) ?>">
 			</div>
 		</div>         
-         
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-4"><strong>Número de OS:</strong><br/>
+				<input type="text" class="form-control " id="" name="n_os" value="<?php echo $os['n_os'] ?>">
+			</div>				  
+		</div>    
+
+		
           <div class="form-group">
 		<div class="col-md-offset-2 col-md-8"><br/> 
 
@@ -349,20 +358,7 @@ $num = numOrdem($os['id']);
 <?php 
 $num = numOrdem($os['id']);
 
-if($num == NULL){
 ?>
-          <div class="form-group">
-		<div class="col-md-offset-2 col-md-8"><br/> 
-        <form method="post" class="form_envia" action="ordem.php?p=os">
-
-		<input type="hidden" name="gerarNumeroOS" value="<?php echo $os['id'];?>">
-		 <input type="submit" class="form_envia btn btn-theme btn-lg btn-block" value="Gerar Número O.S." />      
-        </form>
-
-
-        </div>
-        </div>            
-<?php } ?>
 
 
 <?php 

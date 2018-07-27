@@ -289,12 +289,12 @@ function retornaEndereco($cep){
 
 function numOrdem($id){
 	$con = bancoMysqli();
-	$sql = "SELECT id FROM lej_numero WHERE os = '$id'";
+	$sql = "SELECT n_os FROM lej_os WHERE id = '$id'";
 	$query = mysqli_query($con,$sql);
 	$n = mysqli_num_rows($query);
 	if($n > 0){
 		$f = mysqli_fetch_array($query);
-		return $f['id']; 	
+		return $f['n_os']; 	
 	}else{
 		return NULL;	
 	}	

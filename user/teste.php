@@ -3,10 +3,23 @@ include "../inc/functions.php";
 
 ?>
 <?php
+$con = bancoMysqli();
+$sql_num = "SELECT * FROM lej_numero";
+$query_num = mysqli_query($con,$sql_num);
+while($x = mysqli_fetch_array($query_num)){
+	$num = $x['id'];
+	$os = $x['os'];
+	$sql_upd = "UPDATE lej_os SET n_os = '$num' WHERE id = '$os'";
+	$query_upd = mysqli_query($con,$sql_upd);
+	if($query_upd){
+		echo "atualizado<br />";
+	}
+	
+	
+}
 
 
-
-
+/*
 
 echo "<h1> Maps </h1>";
 $total = 0;
@@ -100,5 +113,5 @@ echo "Distância total: ".$total." km";
 echo "<pre>";
 var_dump($_POST);
 echo "</pre>";
-
+*/
 ?>
